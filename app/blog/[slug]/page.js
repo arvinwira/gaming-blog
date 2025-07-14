@@ -8,7 +8,21 @@ import html from 'remark-html';
 import readingTime from 'reading-time';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 
+
 const postsDirectory = path.join(process.cwd(), 'posts');
+
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+
+  const filePath = path.join(process.cwd(), 'posts', `${slug}.md`);
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const { data } = matter(fileContent);
+
+  return {
+    title: data.title,
+    description: data.excerpt
+  };
+}
 
 export async function generateStaticParams() {
   const fileNames = fs.readdirSync(postsDirectory);
@@ -37,13 +51,6 @@ async function getPostData(slug) {
   };
 }
 
-export async function generateMetadata({ params }) {
-  const postData = await getPostData(params.slug);
-  return {
-    title: postData.title,
-    description: postData.excerpt,
-  };
-}
 
 export default async function Post({ params }) {
   const postData = await getPostData(params.slug);

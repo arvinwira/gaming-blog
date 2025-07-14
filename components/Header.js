@@ -23,7 +23,7 @@ export default function Header() {
                 height={30}
               />
               <span
-                className="text-2xl font-bold text-primary"
+                className="text-xl md:text-2xl font-bold text-primary"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Chronic Reload
