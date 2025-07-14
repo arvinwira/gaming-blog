@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
+/* ===========================================
+  LIGHT MODE COLORS
+=========================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 248 250 252; /* #f8fafc -> light gray-blue */
+  --card: 255 255 255;       /* #ffffff -> white */
+  --foreground: 2 6 23;      /* #020617 -> almost black (very dark blue) */
+  --muted-foreground: 100 116 139; /* #64748b -> muted gray-blue */
+  --primary: 65 182 230;     /* #41b6e6 -> light blue (cyan) */
+  --primary-foreground: 255 255 255; /* #ffffff -> white */
+  --secondary: 219 62 177;   /* #db3eb1 -> pink/magenta */
+  --secondary-foreground: 255 255 255; /* #ffffff -> white */
+  --accent: 208 208 208;     /* #d0d0d0 -> light gray */
+  --border: 226 232 240;     /* #e2e8f0 -> very light gray-blue */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ===========================================
+  DARK MODE COLORS
+=========================================== */
+html.dark {
+  --background: 2 6 23;      /* #020617 -> almost black (very dark blue) */
+  --card: 15 23 42;          /* #0f172a -> dark navy */
+  --foreground: 248 250 252; /* #f8fafc -> very light gray */
+  --muted-foreground: 148 163 184; /* #94a3b8 -> muted light gray-blue */
+  --primary: 65 182 230;     /* #41b6e6 -> light blue (cyan) */
+  --primary-foreground: 2 6 23;    /* #020617 -> almost black */
+  --secondary: 219 62 177;   /* #db3eb1 -> pink/magenta */
+  --secondary-foreground: 2 6 23;  /* #020617 -> almost black */
+  --accent: 208 208 208;     /* #d0d0d0 -> light gray */
+  --border: 30 41 59;        /* #1e293b -> dark blue-gray */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ===========================================
+  BASE STYLES
+=========================================== */
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+/* ===========================================
+  TYPOGRAPHY
+=========================================== */
+@layer base {
+  .prose {
+    font-family: var(--font-serif);
+  }
+
+  .prose p {
+    line-height: 1.75;
+  }
+
+  .prose h2,
+  .prose h3 {
+    margin-top: 2.5em;
+    margin-bottom: 1.25em;
+  }
+
+  .prose img {
+    border: 1px solid rgb(var(--border));
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+  .prose blockquote {
+    font-style: italic;
+    padding: 1em 1.5em;
+    background-color: rgb(var(--secondary)); /* pink background */
+    color: rgb(var(--secondary-foreground)); /* white text in light, black in dark */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===========================================
+  CUSTOM UTILITIES
+=========================================== */
+@layer utilities {
+  /* Backgrounds */
+  .bg-background { background-color: rgb(var(--background)); } /* light gray-blue / almost black */
+  .bg-card { background-color: rgb(var(--card)); } /* white / dark navy */
+  .bg-primary { background-color: rgb(var(--primary)); } /* light blue */
+  .bg-secondary { background-color: rgb(var(--secondary)); } /* pink */
+  .bg-accent { background-color: rgb(var(--accent)); } /* light gray */
+
+  /* Text */
+  .text-foreground { color: rgb(var(--foreground)); } /* dark text / light text */
+  .text-muted-foreground { color: rgb(var(--muted-foreground)); } /* muted gray-blue */
+  .text-primary { color: rgb(var(--primary)); } /* light blue */
+  .text-primary-foreground { color: rgb(var(--primary-foreground)); } /* white / almost black */
+  .text-secondary { color: rgb(var(--secondary)); } /* pink */
+  .text-secondary-foreground { color: rgb(var(--secondary-foreground)); } /* white / almost black */
+
+  /* Borders */
+  .border-border { border-color: rgb(var(--border)); } /* light gray-blue / dark blue-gray */
+  .border-primary { border-color: rgb(var(--primary)); } /* light blue */
+  .border-secondary { border-color: rgb(var(--secondary)); } /* pink */
+
+  .shadow-secondary {
+    box-shadow: 0 10px 15px -3px rgb(var(--secondary) / 0.4),
+                0 4px 6px -4px rgb(var(--secondary) / 0.3);
+  }
 }
+
