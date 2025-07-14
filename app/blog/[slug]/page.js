@@ -53,20 +53,34 @@ export default async function Post({ params }) {
       <ReadingProgressBar />
       <article className="bg-background text-foreground">
         {/* Hero Section */}
-        <header className="relative w-full h-96 mb-12">
-          <Image src={postData.coverImage} alt={`Cover image for ${postData.title}`} layout="fill" objectFit="cover" className="opacity-30" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-8">
-            <div className="max-w-3xl mx-auto">
-            <div className="flex items-center space-x-2">
+        <header className="relative w-full h-[450px] md:h-[550px] rounded-3xl overflow-hidden mb-12 shadow-lg">
+          <Image 
+            src={postData.coverImage} 
+            alt={`Cover image for ${postData.title}`} 
+            layout="fill" 
+            objectFit="cover" 
+            className="opacity-90" 
+            priority 
+          />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+            <div className="max-w-3xl mx-auto flex flex-col gap-2">
+              <div className="flex flex-wrap items-center gap-3">
                 {postData.categories.map((cat) => (
-                  <Link key={cat} href="/categories" className="text-secondary font-semibold text-lg">
+                  <Link 
+                    key={cat} 
+                    href="/categories" 
+                    className="text-secondary font-semibold text-lg hover:underline"
+                  >
                     {cat}
                   </Link>
                 ))}
               </div>
-              <h1 className="text-4xl text-primary md:text-6xl font-extrabold mt-2 font-sans">{postData.title}</h1>
-              <div className="flex items-center space-x-4 text-muted-foreground mt-4 font-sans">
+              <h1 className="text-4xl md:text-6xl font-extrabold mt-2 font-sans text-primary">
+                {postData.title}
+              </h1>
+              <div className="flex items-center gap-4 text-primary mt-2 font-sans">
                 <span>{postData.date}</span>
                 <span>•</span>
                 <span>{postData.stats.text}</span>
@@ -74,6 +88,7 @@ export default async function Post({ params }) {
             </div>
           </div>
         </header>
+
 
         {/* Post Content */}
         <div className="max-w-3xl mx-auto px-4 pb-16">

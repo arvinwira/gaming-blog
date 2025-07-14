@@ -26,31 +26,39 @@ function getPosts() {
 export default function BlogHome() {
   const allPosts = getPosts();
 
-  const trendingPost = allPosts[0];
+  let trendingPost = allPosts.find(post => post.trending) || allPosts[0];
+  
   const featuredPosts = allPosts.filter(post => post.featured).slice(0, 3);
-  const recentPosts = allPosts.slice(1, 5);
+  
+  const recentPosts = allPosts.filter(post => post.slug !== trendingPost.slug).slice(0, 4);
+
 
   return (
     <div className="bg-background text-primary">
       {/* Hero Section - Trending Post */}
-      <section className="relative h-96">
+      <Link href={`/blog/${trendingPost.slug}`} className="block group">
+      <section className="relative w-full max-w-6xl mx-auto my-8 rounded-3xl overflow-hidden h-[500px] transition-transform duration-300 group-hover:scale-105 group-hover:brightness-110">
         <Image
           src={trendingPost.coverImage}
           alt={trendingPost.title}
-          layout="fill"
-          objectFit="cover"
-          className="opacity-20"
+          fill
+          className="object-cover"
         />
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-4 bg-background/70">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-4">{trendingPost.title}</h1>
-            <p className="text-lg md:text-xl mb-6 text-muted-foreground">{trendingPost.excerpt}</p>
-            <Link href={`/blog/${trendingPost.slug}`} className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity">
-              Read More
-            </Link>
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 p-8 md:p-12 flex flex-col justify-center h-full text-white">
+          <div className="text-sm font-semibold mb-4 inline-block">
+            Trending
           </div>
+          <h1 className="text-3xl text-primary md:text-5xl font-bold mb-4 max-w-2xl">
+            {trendingPost.title}
+          </h1>
+          <p className="text-lg max-w-2xl">
+            {trendingPost.excerpt}
+          </p>
         </div>
       </section>
+    </Link>
+
 
       {/* Featured Posts Section */}
       <section className="py-16">

@@ -19,8 +19,8 @@ export default function ContactPage() {
           <p className="text-muted-foreground text-lg">
             For all inquiries, please email us at:
           </p>
-          <a href="mailto:hello@gameon.example.com" className="text-xl text-secondary font-semibold hover:underline">
-            hello@gameon.example.com
+          <a href="mailto:chronicreloadblog@gmail.com" className="text-xl text-secondary font-semibold hover:underline">
+            chronicreloadblog@gmail.com
           </a>
         </div>
       </div>

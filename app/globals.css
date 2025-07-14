@@ -49,7 +49,8 @@ body {
   }
 
   .prose p {
-    line-height: 1.75;
+    line-height: 2;
+    text-align: justify; 
   }
 
   .prose h2,
@@ -70,6 +71,26 @@ body {
     background-color: rgb(var(--secondary)); /* pink background */
     color: rgb(var(--secondary-foreground)); /* white text in light, black in dark */
   }
+
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1.25rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
 }
 
 /* ===========================================
