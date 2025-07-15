@@ -37,6 +37,10 @@ export default function RootLayout({ children }) {
   return (
     // Add suppressHydrationWarning here
     <html lang="en" suppressHydrationWarning>
+      <head>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
+     crossorigin="anonymous"></script>
+      </head>
       <body className={`${poppins.variable} ${lora.variable} ${pressStart2P.variable} font-sans`}>
         {/* The provider must wrap your content */}
         <ThemeProvider>
