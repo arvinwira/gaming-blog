@@ -20,7 +20,7 @@ export default function AboutPage() {
             Chronic Reload was founded from a pure and simple passion for video games. In a sea of endless releases and overwhelming news, we aim to be your trusted filter. Our mission is to deliver honest reviews, insightful guides, and timely news that respects your time and enhances your gaming experience.
           </p>
           <p className="text-muted-foreground">
-            We're not just journalists; we're lifelong gamers, just like you. From the biggest AAA blockbusters to the most obscure indie gems, we play them all and share our genuine thoughts. Thank you for joining our community!
+            We are not journalists; we are lifelong gamers, just like you. From the biggest AAA blockbusters to the most obscure indie gems, we play them all and share our genuine thoughts. Thank you for joining our community!
           </p>
         </div>
       </div>

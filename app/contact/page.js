@@ -11,7 +11,7 @@ export default function ContactPage() {
           Get In Touch
         </h1>
         <p className="text-lg text-muted-foreground mb-12">
-          Have a tip, a question, or just want to say hi? We'd love to hear from you.
+          Have a tip, a question, or just want to say hi? We would love to hear from you.
         </p>
 
         <div className="bg-card p-8 rounded-lg shadow-lg inline-block border border-border shadow-secondary">

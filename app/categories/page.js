@@ -33,7 +33,7 @@ export default function CategoriesPage() {
             Categories
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Filter by category to find what you're looking for.
+            Filter by category to find what you are looking for.
           </p>
         </header>
 
