@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Chronic Reload - A Modern Gaming Blog
 
-## Getting Started
+This is a full-featured, modern gaming blog built with the latest web technologies, including Next.js 15 and Tailwind CSS 4. It's designed to be fast, responsive, and easy to manage.
 
-First, run the development server:
+**Live Demo:** [chronicreload.com](https://chronicreload.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+-   **Markdown-Based Content**: All blog posts are written in simple Markdown files located in the `/posts` directory.
+-   **Fully Responsive Design**: A mobile-first approach ensures the site looks great on all devices, from phones to desktops.
+-   **Light/Dark Mode**: An animated theme switcher allows users to toggle between light and dark modes, with their preference saved.
+-   **Dynamic Categories**: Posts can be assigned multiple categories, and users can filter posts on the categories page.
+-   **Optimized for SEO**: Automatically generates a `sitemap.xml` to help search engines discover and index content.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+This project is built with a modern, performance-focused tech stack:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   **Framework**: Next.js 15 (App Router)
+-   **Styling**: Tailwind CSS 4
+-   **Animations**: Framer Motion
+-   **Theme Management**: next-themes
+-   **Deployment**: Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## UI
 
-## Deploy on Vercel
+<img width="802" height="776" alt="chronic reload ui 1" src="https://github.com/user-attachments/assets/6945a40b-c96b-4cd3-ad33-acf55d87ee2b" />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<img width="1376" height="786" alt="image" src="https://github.com/user-attachments/assets/e218ebf8-8fcc-44cb-8dc4-a492ed17e16a" />
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<img width="1893" height="911" alt="image" src="https://github.com/user-attachments/assets/2f560976-0db1-4f92-bcf4-d0226e63bd1d" />
