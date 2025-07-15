@@ -1,5 +1,5 @@
 ---
-title: 'PEAK: Landfall’s New Physics-Based Co-op Climbing Game You Need to Try"'
+title: 'PEAK: Landfall’s New Physics-Based Co-op Climbing Game You Need to Try'
 date: '2025-07-18'
 excerpt: 'If you love games that transform teamwork into laughter, chaos, and unforgettable moments, get ready for PEAK.'
 coverImage: '/images/PEAK.png'

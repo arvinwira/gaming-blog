@@ -14,7 +14,7 @@ export default function AboutPage() {
           Your Ultimate Source for Gaming News and Reviews
         </p>
 
-        <div className="text-left bg-card p-8 rounded-lg shadow-lg border border-border">
+        <div className="text-left bg-card p-8 rounded-lg shadow-lg border border-border shadow-secondary">
           <h2 className="text-2xl font-bold text-primary mb-4">Our Mission</h2>
           <p className="text-muted-foreground mb-4">
             Chronic Reload was founded from a pure and simple passion for video games. In a sea of endless releases and overwhelming news, we aim to be your trusted filter. Our mission is to deliver honest reviews, insightful guides, and timely news that respects your time and enhances your gaming experience.

@@ -118,8 +118,8 @@ body {
   .border-secondary { border-color: rgb(var(--secondary)); } /* pink */
 
   .shadow-secondary {
-    box-shadow: 0 10px 15px -3px rgb(var(--secondary) / 0.4),
-                0 4px 6px -4px rgb(var(--secondary) / 0.3);
+    box-shadow: 0 15px 20px -3px rgb(var(--secondary) / 0.5),
+                0 8px 16px -4px rgb(var(--secondary) / 0.4);
   }
 }
 

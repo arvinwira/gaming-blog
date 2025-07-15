@@ -19,8 +19,8 @@ export default function Header() {
               <Image
                 src="/logo.png"
                 alt="GameOn Logo"
-                width={90}
-                height={30}
+                width={80}
+                height={20}
               />
               <span
                 className="text-xl md:text-2xl font-bold text-primary"

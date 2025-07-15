@@ -14,7 +14,7 @@ export default function ContactPage() {
           Have a tip, a question, or just want to say hi? We'd love to hear from you.
         </p>
 
-        <div className="bg-card p-8 rounded-lg shadow-lg inline-block border border-border">
+        <div className="bg-card p-8 rounded-lg shadow-lg inline-block border border-border shadow-secondary">
           <h2 className="text-2xl font-bold text-primary mb-4">Contact Information</h2>
           <p className="text-muted-foreground text-lg">
             For all inquiries, please email us at:

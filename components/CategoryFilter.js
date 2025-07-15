@@ -44,7 +44,7 @@ export default function CategoryFilter({ posts, categories }) {
       {/* Posts Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredPosts.map(post => (
-          <Link href={`/blog/${post.slug}`} key={post.slug} className="block bg-card rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-transform duration-300 border border-border">
+          <Link href={`/blog/${post.slug}`} key={post.slug} className="block bg-card rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] shadow-secondary transition-transform duration-300 border border-border">
             <Image src={post.coverImage} alt={post.title} width={400} height={250} className="w-full h-48 object-cover"/>
             <div className="p-6">
               <div className="flex flex-wrap gap-2 mb-3">
