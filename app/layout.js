@@ -1,4 +1,3 @@
-// app/layout.js
 import { Poppins, Lora, Press_Start_2P } from 'next/font/google';
 import './globals.css'
 import Header from '@/components/Header'

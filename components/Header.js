@@ -14,7 +14,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div>
             <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/logo.png"
@@ -23,7 +23,7 @@ export default function Header() {
                 height={20}
               />
               <span
-                className="text-xl md:text-2xl font-bold text-primary"
+                className="text-lg sm:text-xl md:text-2xl font-bold text-primary"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Chronic Reload
@@ -41,7 +41,7 @@ export default function Header() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center ">
             <AnimatedThemeSwitcher />
             <button
               onClick={() => setMenuOpen(!menuOpen)}

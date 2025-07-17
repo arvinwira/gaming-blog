@@ -79,33 +79,36 @@ export default function BlogHome() {
       </div>
     </section>
 
-      {/* Recent Posts Section */}
-    <section className="py-16 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-left mb-10">Recent Posts</h2>
-        <div className="space-y-8 max-w-3xl mx-auto">
-          {recentPosts.map(post => (
-            <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
-              <div className="flex items-center space-x-6 p-4 rounded-lg bg-card shadow-secondary hover:scale-105 transition-transform duration-300 border border-border">
-                  <div className="flex-shrink-0">
-                      <Image src={post.coverImage} alt={post.title} width={150} height={100} className="rounded-md object-cover"/>
-                  </div>
-                  <div>
-                  <span className="text-secondary text-sm font-semibold">{post.categories.join(' • ')}</span>
-                  <h3 className="text-xl font-bold mt-1 group-hover:underline">{post.title}</h3>
-                  <p className="text-muted-foreground text-sm mt-2">{post.excerpt}</p>
-                  </div>
+     {/* Recent Posts Section */}
+<section className="py-16 bg-background">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 className="text-3xl font-bold text-left mb-10">Recent Posts</h2>
+    <div className="space-y-8 max-w-3xl mx-auto">
+      {recentPosts.map(post => (
+        <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
+          {/* This container now stacks vertically on mobile and goes horizontal on small screens and up */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 p-4 rounded-lg bg-card shadow-secondary hover:scale-105 transition-transform duration-300 border border-border">
+              <div className="flex-shrink-0">
+                  {/* The image is now full-width on mobile and a fixed size on larger screens */}
+                  <Image src={post.coverImage} alt={post.title} width={150} height={100} className="rounded-md object-cover w-full h-48 sm:w-[150px] sm:h-[100px]"/>
               </div>
-            </Link>
-          ))}
-        </div>
-        <div className="text-center mt-12">
-          <Link href="/categories" className="px-8 py-3 border border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors">
-            View All Posts
-          </Link>
-        </div>
-      </div>
-    </section>
+              {/* Add margin-top for mobile spacing, which is removed on larger screens */}
+              <div className="mt-4 sm:mt-0">
+              <span className="text-secondary text-sm font-semibold">{post.categories.join(' • ')}</span>
+              <h3 className="text-xl font-bold mt-1 group-hover:underline">{post.title}</h3>
+              <p className="text-muted-foreground text-sm mt-2">{post.excerpt}</p>
+              </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+    <div className="text-center mt-12">
+      <Link href="/categories" className="px-8 py-3 border border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors">
+        View All Posts
+      </Link>
+    </div>
+  </div>
+</section>
     </div>
   );
 }
