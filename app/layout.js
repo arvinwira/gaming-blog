@@ -27,11 +27,6 @@ const pressStart2P = Press_Start_2P({
 export const metadata = {
   title: 'Chronic Reload | Your Gaming News Hub',
   description: 'The latest in gaming news.',
-  icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
-  },
   jsonLd: {
     '@context': 'https://schema.org',
     '@type': 'WebSite', 
@@ -51,13 +46,34 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-      <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
           crossOrigin="anonymous"
         />
+       
+        {/* ✅ Open Graph Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://chronicreload.com/" />
+        <meta property="og:title" content="Chronic Reload | Your Gaming News Hub" />
+        <meta property="og:description" content="Stay up to date with the latest gaming news, reviews, and upcoming releases. Chronic Reload brings you curated content and fresh updates for gamers." />
+        <meta property="og:image" content="https://chronicreload.com/logo.png" />
+
+        {/* ✅ Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://chronicreload.com/" />
+        <meta name="twitter:title" content="Chronic Reload | Your Gaming News Hub" />
+        <meta name="twitter:description" content="Get the latest on gaming news, reviews, and new releases with Chronic Reload." />
+        <meta name="twitter:image" content="https://chronicreload.com/logo.png" />
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify(metadata.jsonLd)
+        }} />
+
       </head>
       <body className={`${poppins.variable} ${lora.variable} ${pressStart2P.variable} font-sans`}>
         <ThemeProvider>
