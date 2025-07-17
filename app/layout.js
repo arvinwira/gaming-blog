@@ -24,24 +24,19 @@ const pressStart2P = Press_Start_2P({
   variable: '--font-heading',
 });
 
+
+
 export const metadata = {
-  title: 'Chronic Reload | Your Gaming News Hub',
-  description: 'The latest in gaming news.',
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite', 
-    name: 'Chronic Reload',
-    url: 'https://chronicreload.com',
-    publisher: { 
-      '@type': 'Organization',
-      name: 'Chronic Reload',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://chronicreload.com/logo.png',
-      },
-    },
+  title: "Chronic Reload",
+  description: "Your trusted source for reliable news & media",
+  openGraph: {
+    title: "Chronic Reload",
+    description: "Your trusted source for reliable news & media",
+    url: "https://chronicreload.com",
+    siteName: "Chronic Reload",
   },
 };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -70,9 +65,6 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content="Get the latest on gaming news, reviews, and new releases with Chronic Reload." />
         <meta name="twitter:image" content="https://chronicreload.com/logo.png" />
 
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify(metadata.jsonLd)
-        }} />
 
       </head>
       <body className={`${poppins.variable} ${lora.variable} ${pressStart2P.variable} font-sans`}>
