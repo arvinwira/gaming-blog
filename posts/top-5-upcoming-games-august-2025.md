@@ -5,7 +5,7 @@ excerpt: 'August 2025 is packed with promising titles that have been on our rada
 categories: ['Preview', 'News', 'Upcoming']
 coverImage: '/images/SnakeEater.webp'
 featured: true
-trending: true
+
 ---
 
 The summer heat is on, and so is the gaming release schedule! August 2025 is packed with promising titles that have been on our radar for months. Here are the five games you absolutely need to watch out for.

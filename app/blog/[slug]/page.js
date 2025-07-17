@@ -12,35 +12,31 @@ import ReadingProgressBar from '@/components/ReadingProgressBar';
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
-
-  const filePath = path.join(process.cwd(), 'posts', `${slug}.md`);
+  const { slug } = await params;
+  const filePath = path.join(postsDirectory, `${slug}.md`);
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const { data } = matter(fileContent);
 
   return {
     title: data.title,
-    description: data.excerpt
+    description: data.excerpt,
   };
 }
 
 export async function generateStaticParams() {
   const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map(fileName => ({ slug: fileName.replace(/\.md$/, '') }));
+  return fileNames.map(fileName => ({
+    slug: fileName.replace(/\.md$/, ''),
+  }));
 }
 
 async function getPostData(slug) {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-
-  // Add reading time
   const stats = readingTime(content);
-  
-  const processedContent = await remark()
-    .use(html)
-    .process(content);
-  
+
+  const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
   return {
@@ -51,9 +47,9 @@ async function getPostData(slug) {
   };
 }
 
-
 export default async function Post({ params }) {
-  const postData = await getPostData(params.slug);
+  const { slug } = await params;
+  const postData = await getPostData(slug);
 
   return (
     <>
