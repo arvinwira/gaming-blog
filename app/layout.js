@@ -33,24 +33,37 @@ export const metadata = {
     shortcut: '/favicon.ico',
     apple: '/logo.png',
   },
+  jsonLd: {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite', 
+    name: 'Chronic Reload',
+    url: 'https://chronicreload.com',
+    publisher: { 
+      '@type': 'Organization',
+      name: 'Chronic Reload',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://chronicreload.com/logo.png',
+      },
+    },
+  },
 };
-
 export default function RootLayout({ children }) {
   return (
-    // Add suppressHydrationWarning here
     <html lang="en" suppressHydrationWarning>
       <head>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
-     crossorigin="anonymous"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`${poppins.variable} ${lora.variable} ${pressStart2P.variable} font-sans`}>
-        {/* The provider must wrap your content */}
         <ThemeProvider>
           <div className="flex flex-col min-h-screen bg-background">
             <Header />
-            <main className="flex-grow">
-              {children}
-            </main>
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>
