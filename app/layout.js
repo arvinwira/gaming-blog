@@ -28,8 +28,8 @@ export const metadata = {
   title: 'Chronic Reload | Your Gaming News Hub',
   description: 'The latest in gaming news.',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: '/logo.png',
+    shortcut: '/logo.png',
     apple: '/logo.png',
   },
   jsonLd: {
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="icon" href="/icon.png" type="image/png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
           async
