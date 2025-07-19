@@ -3,8 +3,7 @@ title: 'Most Addictive Idle Games You Can’t Stop Playing (Updated 2025)'
 date: '2025-07-18'
 excerpt: 'Discover the best idle and AFK games to play in 2025. From RPGs to quirky business sims, these addictive mobile and PC games let you progress—even when you’re not playing.'
 coverImage: '/images/placeholder.jpg'
-categories: ['Mobile Games', 'Idle Games', '2025 Recommendations']
-featured: true
+categories: ['Mobile Games', 'Idle Games']
 ---
 
 # 🎮 Most Addictive Idle Games You Can’t Stop Playing (Updated 2025)
