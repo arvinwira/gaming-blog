@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
           <h2>3. Google AdSense and Third-Party Tools</h2>
           <p>
             We use third-party vendors, including Google, to serve ads. These parties may use cookies to serve ads
-            based on a user's prior visits to our website or other websites. Google's use of advertising cookies enables
+            based on a users prior visits to our website or other websites. Google use of advertising cookies enables
             it and its partners to serve more relevant ads.
           </p>
           <p>
