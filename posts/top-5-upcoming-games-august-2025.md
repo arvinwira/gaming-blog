@@ -2,9 +2,8 @@
 title: 'Top 5 Most Anticipated Games of August 2025'
 date: '2025-07-15'
 excerpt: 'August 2025 is packed with promising titles that have been on our radar for months. Here are the five games you absolutely need to watch out for.'
-categories: ['Preview', 'News', 'Upcoming']
+categories: ['Upcoming']
 coverImage: '/images/SnakeEater.webp'
-featured: true
 
 ---
 
