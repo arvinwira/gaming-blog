@@ -12,7 +12,7 @@ export const metadata = {
           </h1>
           <div className="prose prose-invert max-w-none">
             <p>
-              These Terms and Conditions ("Terms") govern your use of the Chronic Reload Blog website. By accessing or using the site, you agree to abide by these Terms. If you do not agree, please do not use the website.
+              These Terms and Conditions govern your use of the Chronic Reload Blog website. By accessing or using the site, you agree to abide by these Terms. If you do not agree, please do not use the website.
             </p>
   
             <h2>1. Use of Content</h2>
@@ -32,7 +32,7 @@ export const metadata = {
               <li>Respect other users and refrain from submitting abusive or inappropriate content</li>
             </ul>
   
-            <h2>3. Third-Party Ads & Links</h2>
+            <h2>3. Third-Party Ads &amp; Links</h2>
             <p>
               This website may contain advertisements and links to external sites. We do not endorse, control, or take responsibility for any third-party content, services, or offers.
             </p>
@@ -46,7 +46,7 @@ export const metadata = {
   
             <h2>4. Disclaimer</h2>
             <p>
-              The content on Chronic Reload is provided "as is" for informational purposes only. We make no warranties about the accuracy or completeness of the content and disclaim all liability for errors or omissions.
+              The content on Chronic Reload is provided as is for informational purposes only. We make no warranties about the accuracy or completeness of the content and disclaim all liability for errors or omissions.
             </p>
   
             <h2>5. Limitation of Liability</h2>
