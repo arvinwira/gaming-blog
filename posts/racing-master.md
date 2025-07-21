@@ -4,7 +4,6 @@ date: '2025-07-19'
 excerpt: 'Discover Racing Master, the hyper-realistic mobile racing simulator by NetEase and Codemasters—featuring over 100 licensed supercars, real-world tracks, stunning Unreal Engine visuals, competitive multiplayer, and deep customization. Learn release dates, gameplay, progression tips, and more.'
 coverImage: '/images/racingmaster4.jpeg'
 categories: ['Simulator', 'Racing', 'Mobile Games']
-featured: true
 ---
 
 ## What Is Racing Master?
