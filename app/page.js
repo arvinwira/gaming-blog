@@ -1,27 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getPosts } from '@/lib/posts'; // 1. Import the correct function
 
-function getPosts() {
-  const postsDirectory = path.join(process.cwd(), 'posts');
-  const fileNames = fs.readdirSync(postsDirectory);
-
-  const allPosts = fileNames.map(fileName => {
-    const slug = fileName.replace(/\.md$/, '');
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(fileContents);
-
-    return {
-      slug,
-      ...data,
-    };
-  });
-
-  return allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-}
+// 2. The old, incorrect getPosts function has been removed from here.
 
 export default function BlogHome() {
   const allPosts = getPosts();
@@ -66,7 +47,6 @@ export default function BlogHome() {
         <h2 className="text-3xl font-bold text-left mb-10">Featured Posts</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredPosts.map(post => (
-            // Add the 'group' class to this Link component
             <Link href={`/blog/${post.slug}`} key={post.slug} className="block group bg-card rounded-lg overflow-hidden shadow-secondary hover:scale-105 transition-transform duration-300 border border-border">
               <Image src={post.coverImage} alt={post.title} width={400} height={250} className="w-full h-48 object-cover"/>
               <div className="p-6">
@@ -86,15 +66,15 @@ export default function BlogHome() {
     <div className="space-y-8 max-w-3xl mx-auto">
       {recentPosts.map(post => (
         <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
-          {/* This container now stacks vertically on mobile and goes horizontal on small screens and up */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 p-4 rounded-lg bg-card shadow-secondary hover:scale-105 transition-transform duration-300 border border-border">
               <div className="flex-shrink-0">
-                  {/* The image is now full-width on mobile and a fixed size on larger screens */}
                   <Image src={post.coverImage} alt={post.title} width={150} height={100} className="rounded-md object-cover w-full h-48 sm:w-[150px] sm:h-[100px]"/>
               </div>
-              {/* Add margin-top for mobile spacing, which is removed on larger screens */}
               <div className="mt-4 sm:mt-0">
-              <span className="text-secondary text-sm font-semibold">{post.categories.join(' • ')}</span>
+              {/* 3. This line now safely checks if categories exist */}
+              <span className="text-secondary text-sm font-semibold">
+                {post.categories && post.categories.join(' • ')}
+              </span>
               <h3 className="text-xl font-bold mt-1 group-hover:underline">{post.title}</h3>
               <p className="text-muted-foreground text-sm mt-2">{post.excerpt}</p>
               </div>

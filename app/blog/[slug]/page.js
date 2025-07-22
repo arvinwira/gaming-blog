@@ -1,55 +1,41 @@
+import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import Link from 'next/link';
 import Image from 'next/image';
-import { remark } from 'remark';
-import html from 'remark-html';
-import readingTime from 'reading-time';
+import { getPostData } from '@/lib/posts';
+import { MDXContent } from '@/components/MDXcontent';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
-
+import readingTime from 'reading-time';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
-
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const filePath = path.join(postsDirectory, `${slug}.md`);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-  const { data } = matter(fileContent);
-
-  return {
-    title: data.title,
-    description: data.excerpt,
-  };
-}
 
 export async function generateStaticParams() {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map(fileName => ({
-    slug: fileName.replace(/\.md$/, ''),
+    slug: fileName.replace(/\.mdx$/, ''),
   }));
 }
 
-async function getPostData(slug) {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
-  const stats = readingTime(content);
-
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
+export async function generateMetadata({ params }) {
+  const slug = params.slug;
+  const { frontmatter } = await getPostData(slug);
 
   return {
-    slug,
-    contentHtml,
-    stats,
-    ...data,
+    title: frontmatter.title,
+    description: frontmatter.excerpt,
   };
 }
 
 export default async function Post({ params }) {
-  const { slug } = await params;
-  const postData = await getPostData(slug);
+  const slug = params.slug;
+
+  const { code, frontmatter } = await getPostData(slug);
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const { content } = matter(fileContents);
+  const stats = readingTime(content);
+
 
   return (
     <>
@@ -57,23 +43,23 @@ export default async function Post({ params }) {
       <article className="bg-background text-foreground">
         {/* Hero Section */}
         <header className="relative w-full h-[450px] md:h-[550px] rounded-3xl overflow-hidden mb-12 shadow-lg">
-          <Image 
-            src={postData.coverImage} 
-            alt={`Cover image for ${postData.title}`} 
-            layout="fill" 
-            objectFit="cover" 
-            className="opacity-90" 
-            priority 
+          <Image
+            src={frontmatter.coverImage}
+            alt={`Cover image for ${frontmatter.title}`}
+            layout="fill"
+            objectFit="cover"
+            className="opacity-90"
+            priority
           />
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
             <div className="max-w-3xl mx-auto flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-3">
-                {postData.categories.map((cat) => (
-                  <Link 
-                    key={cat} 
-                    href="/categories" 
+                {frontmatter.categories.map((cat) => (
+                  <Link
+                    key={cat}
+                    href="/categories"
                     className="text-secondary font-semibold text-lg hover:underline"
                   >
                     {cat}
@@ -81,24 +67,22 @@ export default async function Post({ params }) {
                 ))}
               </div>
               <h1 className="text-4xl md:text-6xl font-extrabold mt-2 font-sans text-primary">
-                {postData.title}
+                {frontmatter.title}
               </h1>
               <div className="flex items-center gap-4 text-primary mt-2 font-sans">
-                <span>{postData.date}</span>
+                <span>{frontmatter.date}</span>
                 <span>•</span>
-                <span>{postData.stats.text}</span>
+                <span>{stats.text}</span>
               </div>
             </div>
           </div>
         </header>
 
-
         {/* Post Content */}
         <div className="max-w-3xl mx-auto px-4 pb-16">
-          <div
-            className="prose dark:prose-invert prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-          />
+          <div className="prose dark:prose-invert prose-lg max-w-none">
+            <MDXContent code={code} />
+          </div>
         </div>
       </article>
     </>

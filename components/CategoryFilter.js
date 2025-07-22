@@ -57,7 +57,8 @@ export default function CategoryFilter({ posts, categories }) {
                   </span>
                 ))}
               </div>
-              <h3 className="text-xl font-semibold text-foreground">{post.title}</h3>
+              <h3 className="text-xl text-primary font-semibold mb-2">{post.title}</h3>
+              <p className="text-muted-foreground text-sm">{post.excerpt}</p>
             </div>
           </Link>
         ))}

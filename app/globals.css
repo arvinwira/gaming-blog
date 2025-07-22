@@ -4,8 +4,8 @@
   LIGHT MODE COLORS
 =========================================== */
 :root {
-  --background: 248 250 252; /* #f8fafc -> light gray-blue */
-  --card: 255 255 255;       /* #ffffff -> white */
+  --background: 227 229 230; /* #f8fafc -> light gray-blue */
+  --card: 230 234 237;       /* #ffffff -> white */
   --foreground: 2 6 23;      /* #020617 -> almost black (very dark blue) */
   --muted-foreground: 51 65 85;
   --primary: 65 182 230;     /* #41b6e6 -> light blue (cyan) */

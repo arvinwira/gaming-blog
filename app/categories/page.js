@@ -1,25 +1,12 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import { getPosts } from '@/lib/posts'; 
 import CategoryFilter from '@/components/CategoryFilter';
 
 function getAllPostsData() {
-    const postsDirectory = path.join(process.cwd(), 'posts');
-    const fileNames = fs.readdirSync(postsDirectory);
-
-    const allPosts = fileNames.map(fileName => {
-        const slug = fileName.replace(/\.md$/, '');
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-        const { data } = matter(fileContents);
-        return { slug, ...data };
-    });
-
-    const sortedPosts = allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const allPosts = getPosts();
     
     const categories = [...new Set(allPosts.flatMap(post => post.categories))];
     
-    return { posts: sortedPosts, categories };
+    return { posts: allPosts, categories };
 }
 
 export default function CategoriesPage() {
