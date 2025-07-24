@@ -46,6 +46,20 @@ body {
   display: inline-block !important;
 }
 
+.sharethis-inline-share-buttons.st-hidden {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: auto !important;
+}
+
+.sharethis-inline-reaction-buttons.st-hidden {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: auto !important;
+}
+
 
 /* ===========================================
   TYPOGRAPHY
