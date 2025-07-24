@@ -15,7 +15,7 @@ export default function ShareThisInitializer() {
       ) {
         window.__sharethis__.initialize();
       }
-    }, 500);
+    }, 150);
 
     return () => clearTimeout(timer);
   }, [pathname]);

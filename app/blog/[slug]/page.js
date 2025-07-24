@@ -106,10 +106,7 @@ export default async function Post({ params: { slug } }) {
         
         <ShareThisInitializer /> 
 
-        <Script
-          src="https://platform-api.sharethis.com/js/sharethis.js#property=6881ec0c00e023754cac60cb&product=inline-share-buttons&source=platform"
-          strategy="afterInteractive"
-        />
+     
 
         {/* More Posts */}
         <section className="py-16 border-t border-border">

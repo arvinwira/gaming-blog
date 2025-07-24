@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPosts } from '@/lib/posts'; // 1. Import the correct function
+import { getPosts } from '@/lib/posts'; 
 
-// 2. The old, incorrect getPosts function has been removed from here.
 
 export default function BlogHome() {
   const allPosts = getPosts();

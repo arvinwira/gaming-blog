@@ -52,6 +52,11 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
 
+        <Script
+          src="https://platform-api.sharethis.com/js/sharethis.js#property=6881ec0c00e023754cac60cb&product=inline-share-buttons&source=platform"
+          strategy="afterInteractive"
+        />
+
         {/* GA4 */}
         <Script
         async
