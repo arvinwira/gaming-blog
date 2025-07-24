@@ -9,7 +9,8 @@ import ReadingProgressBar from '@/components/ReadingProgressBar';
 import TableOfContents from '@/components/TableOfContents'; 
 import readingTime from 'reading-time';
 import Script from 'next/script';
-import ShareThisInitializer from '@/components/Sharethis';
+import ShareThisInitializer from '@/components/ShareThis';
+
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
