@@ -11,11 +11,11 @@ export default function ShareThisInitializer() {
       if (
         typeof window !== 'undefined' &&
         window.__sharethis__ &&
-        !document.querySelector('.sharethis-inline-share-buttons .st-btn')
+        document.querySelector('.sharethis-inline-share-buttons')
       ) {
         window.__sharethis__.initialize();
       }
-    }, 150);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [pathname]);

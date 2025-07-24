@@ -11,7 +11,6 @@ import readingTime from 'reading-time';
 import Script from 'next/script';
 import ShareThisInitializer from '@/components/ShareThis';
 
-
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 export async function generateStaticParams() {
