@@ -1,14 +1,13 @@
 'use client';
 
-
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 export default function ShareThisInitializer() {
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleRouteChange = () => {
+    const timer = setTimeout(() => {
       if (
         typeof window !== 'undefined' &&
         window.__sharethis__ &&
@@ -16,15 +15,10 @@ export default function ShareThisInitializer() {
       ) {
         window.__sharethis__.initialize();
       }
-    };
+    }, 500);
 
-    handleRouteChange(); 
-    router.events?.on?.('routeChangeComplete', handleRouteChange);
-
-    return () => {
-      router.events?.off?.('routeChangeComplete', handleRouteChange);
-    };
-  }, [router]);
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   return null;
 }
