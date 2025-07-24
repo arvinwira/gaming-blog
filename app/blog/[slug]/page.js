@@ -107,7 +107,7 @@ export default async function Post({ params: { slug } }) {
         <ShareThisInitializer /> 
 
         <Script
-          src="https://platform-api.sharethis.com/js/sharethis.js#property=6881d61da47aa2d32eac58ce&product=inline-share-buttons&source=platform"
+          src="https://platform-api.sharethis.com/js/sharethis.js#property=6881ec0c00e023754cac60cb&product=inline-share-buttons&source=platform"
           strategy="afterInteractive"
         />
 
