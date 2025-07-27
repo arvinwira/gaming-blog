@@ -11,7 +11,10 @@ export default function ShareThisInitializer() {
       if (
         typeof window !== 'undefined' &&
         window.__sharethis__ &&
-        document.querySelector('.sharethis-inline-share-buttons')
+        (
+          document.querySelector('.sharethis-inline-share-buttons') ||
+          document.querySelector('.sharethis-inline-reaction-buttons')
+        )
       ) {
         window.__sharethis__.initialize();
       }
