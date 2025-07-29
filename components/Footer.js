@@ -16,10 +16,10 @@ export default function Footer() {
         <div className="text-center md:text-right">
           <p className="text-sm">&copy; 2025 Chronic Reload Blog.</p>
           <div className="mt-4 space-x-6 text-xs">
-            <Link href="/privacy-policy" className="hover:underline text-foreground">
+            <Link href="/privacy-policy" className="hover:underline text-foreground text-primary">
               Privacy Policy
             </Link>
-            <Link href="/terms-and-conditions" className="hover:underline text-foreground">
+            <Link href="/terms-and-conditions" className="hover:underline text-foreground text-secondary">
               Terms & Conditions
             </Link>
           </div>
