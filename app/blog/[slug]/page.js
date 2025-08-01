@@ -74,6 +74,8 @@ export default async function Post({ params: { slug } }) {
                 {frontmatter.title}
               </h1>
               <div className="flex items-center gap-4 text-primary mt-2 font-sans">
+                <span>By {frontmatter.author}</span>
+                <span>•</span>
                 <span>{frontmatter.date}</span>
                 <span>•</span>
                 <span>{stats.text}</span>
@@ -100,12 +102,8 @@ export default async function Post({ params: { slug } }) {
             <TableOfContents />
           </aside>
         </div>
-        
         <div className="sharethis-inline-reaction-buttons"></div>
-        
         <ShareThisInitializer /> 
-
-     
 
         {/* More Posts */}
         <section className="py-16 border-t border-border">

@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
             <li>To comply with legal obligations and enforce our terms</li>
           </ul>
 
-          <h2>3. Google AdSense and Third-Party Tools</h2>
+          <h2>3. Google AdSense and Third Party Tools</h2>
           <p>
             We use third-party vendors, including Google, to serve ads. These parties may use cookies to serve ads
             based on a users prior visits to our website or other websites. Google use of advertising cookies enables
