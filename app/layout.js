@@ -53,10 +53,31 @@ export default function RootLayout({ children }) {
         />
 
         <Script
-          src="https://platform-api.sharethis.com/js/sharethis.js#property=6881ec0c00e023754cac60cb&product=inline-share-buttons,inline-reaction-buttons&source=platform"
-          strategy="afterInteractive"
+          id="funding-choices"
+          async
+          src="https://fundingchoicesmessages.google.com/i/pub-8887590102646300?ers=1"
         />
 
+        <Script id="funding-choices-init" strategy="afterInteractive">
+        {`
+          (function() {
+            function signalGooglefcPresent() {
+              if (!window.frames['googlefcPresent']) {
+                if (document.body) {
+                  const iframe = document.createElement('iframe');
+                  iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;';
+                  iframe.style.display = 'none';
+                  iframe.name = 'googlefcPresent';
+                  document.body.appendChild(iframe);
+                } else {
+                  setTimeout(signalGooglefcPresent, 0);
+                }
+              }
+            }
+            signalGooglefcPresent();
+          })();
+        `}
+        </Script>
 
         {/* GA4 */}
         <Script
