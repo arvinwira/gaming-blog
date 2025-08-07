@@ -46,11 +46,10 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/favicon.ico" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-       <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-8887590102646300"
-        crossorigin="anonymous">
-          
+       <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
+          crossorigin="anonymous">
         </script>
 
 
