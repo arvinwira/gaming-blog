@@ -67,6 +67,7 @@ body {
 @layer base {
   .prose {
     font-family: var(--font-serif);
+    font-size: large;
   }
 
   .prose p {
