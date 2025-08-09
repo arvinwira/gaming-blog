@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import Image from 'next/image';
-import { getPosts, getPostData } from '@/lib/posts';
+import { getPosts, getPostData } from '@/lib/posts'; 
 import { MDXContent } from '@/components/MDXcontent';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 import TableOfContents from '@/components/TableOfContents'; 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params: { slug } }) {
 export default async function Post({ params: { slug } }) {
   const { code, frontmatter } = await getPostData(slug);
 
-  const allPosts = getPosts();
+  const { posts: allPosts } = getPosts(); 
   const morePosts = allPosts.filter(post => post.slug !== slug).slice(0, 3);
 
   const fullPath = path.join(postsDirectory, `${slug}.mdx`);

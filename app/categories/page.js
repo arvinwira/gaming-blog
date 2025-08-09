@@ -1,16 +1,12 @@
 import { getPosts } from '@/lib/posts'; 
 import CategoryFilter from '@/components/CategoryFilter';
 
-function getAllPostsData() {
-    const allPosts = getPosts();
-    
-    const categories = [...new Set(allPosts.flatMap(post => post.categories))];
-    
-    return { posts: allPosts, categories };
-}
+export default function CategoriesPage({ searchParams }) {
+  const query = searchParams?.q || '';
+  const currentPage = Number(searchParams?.page) || 1;
+  const category = searchParams?.category || null; 
 
-export default function CategoriesPage() {
-  const { posts, categories } = getAllPostsData();
+  const { posts, totalPages, categories } = getPosts({ query, currentPage, category });
 
   return (
     <div className="bg-background min-h-screen text-foreground p-4 sm:p-6 md:p-8">
@@ -24,7 +20,12 @@ export default function CategoriesPage() {
           </p>
         </header>
 
-        <CategoryFilter posts={posts} categories={categories} />
+        <CategoryFilter 
+          posts={posts} 
+          categories={categories} 
+          totalPages={totalPages}
+          currentPage={currentPage}
+        />
       </div>
     </div>
   );

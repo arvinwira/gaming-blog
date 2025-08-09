@@ -4,14 +4,13 @@ import { getPosts } from '@/lib/posts';
 
 
 export default function BlogHome() {
-  const allPosts = getPosts();
+  const { posts: allPosts } = getPosts();
 
   let trendingPost = allPosts.find(post => post.trending) || allPosts[0];
   
   const featuredPosts = allPosts.filter(post => post.featured).slice(0, 3);
   
-  const recentPosts = allPosts.filter(post => post.slug !== trendingPost.slug).slice(0, 4);
-
+  const recentPosts = allPosts.filter(post => post.slug !== trendingPost.slug).slice(0, 5);
 
   return (
     <div className="bg-background text-primary">
@@ -70,7 +69,6 @@ export default function BlogHome() {
                   <Image src={post.coverImage} alt={post.title} width={150} height={100} className="rounded-md object-cover w-full h-48 sm:w-[150px] sm:h-[100px]"/>
               </div>
               <div className="mt-4 sm:mt-0">
-              {/* 3. This line now safely checks if categories exist */}
               <span className="text-secondary text-sm font-semibold">
                 {post.categories && post.categories.join(' • ')}
               </span>
