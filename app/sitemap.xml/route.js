@@ -11,7 +11,12 @@ function getPosts() {
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data } = matter(fileContents);
-    return { slug, ...data };
+
+    // Get last modified time from file system
+    const stats = fs.statSync(fullPath);
+    const lastModified = stats.mtime.toISOString(); // uses file's last modified date
+
+    return { slug, lastModified, ...data };
   });
 }
 
@@ -20,15 +25,15 @@ export async function GET() {
   const siteUrl = 'https://chronicreload.com';
 
   const staticRoutes = [
-    { url: siteUrl, lastModified: new Date().toISOString() },
-    { url: `${siteUrl}/about`, lastModified: new Date().toISOString() },
-    { url: `${siteUrl}/contact`, lastModified: new Date().toISOString() },
-    { url: `${siteUrl}/categories`, lastModified: new Date().toISOString() },
+    { url: siteUrl, lastModified: '2025-08-01' }, // manually set unless changed
+    { url: `${siteUrl}/about`, lastModified: '2025-08-01' },
+    { url: `${siteUrl}/contact`, lastModified: '2025-08-01' },
+    { url: `${siteUrl}/categories`, lastModified: '2025-08-01' },
   ];
 
-  const postRoutes = posts.map(({ slug }) => ({
+  const postRoutes = posts.map(({ slug, lastModified }) => ({
     url: `${siteUrl}/blog/${slug}`,
-    lastModified: new Date().toISOString(),
+    lastModified,
   }));
 
   const allRoutes = [...staticRoutes, ...postRoutes];

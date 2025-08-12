@@ -60,6 +60,20 @@ body {
   height: auto !important;
 }
 
+/* Embla Carousel Base Styles */
+.embla {
+  overflow: hidden;
+  perspective: 1200px;
+}
+.embla__container {
+  display: flex;
+  transform-style: preserve-3d;
+}
+
+.embla__slide {
+  flex: 0 0 90%; 
+  backface-visibility: hidden;
+}
 
 /* ===========================================
   TYPOGRAPHY

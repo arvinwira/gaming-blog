@@ -1,42 +1,46 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPosts } from '@/lib/posts'; 
+import TrendingCarousel from '@/components/TrendingCarousel';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
 
+// This function gets all posts without sorting them by date
+function getAllPostsRaw() {
+  const postsDirectory = path.join(process.cwd(), 'posts');
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  return fileNames.map(fileName => {
+    const slug = fileName.replace(/\.mdx$/, '');
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(fileContents);
+    return { slug, ...data };
+  });
+}
 
 export default function BlogHome() {
-  const { posts: allPosts } = getPosts();
+  // Get an unsorted list for trending and featured sections
+  const allPostsRaw = getAllPostsRaw();
+  
+  // Get a date-sorted list for the recent posts section
+  const { posts: allPostsSorted } = getPosts();
 
-  let trendingPost = allPosts.find(post => post.trending) || allPosts[0];
+  // Filter for trending and featured posts from the unsorted list
+  const trendingPosts = allPostsRaw.filter(post => post.trending).slice(0, 3);
+  const featuredPosts = allPostsRaw.filter(post => post.featured).slice(0, 3);
   
-  const featuredPosts = allPosts.filter(post => post.featured).slice(0, 3);
-  
-  const recentPosts = allPosts.filter(post => post.slug !== trendingPost.slug).slice(0, 5);
+  // Ensure recent posts don't include anything from the carousel
+  const trendingPostSlugs = trendingPosts.map(post => post.slug);
+  const recentPosts = allPostsSorted
+    .filter(post => !trendingPostSlugs.includes(post.slug))
+    .slice(0, 5);
 
   return (
     <div className="bg-background text-primary">
       {/* Hero Section - Trending Post */}
-      <Link href={`/blog/${trendingPost.slug}`} className="block group ">
-      <section className="relative w-full max-w-6xl mx-auto my-8 rounded-3xl shadow-2xl shadow-secondary overflow-hidden h-[500px] transition-transform duration-300 group-hover:scale-105 group-hover:brightness-110">
-        <Image
-          src={trendingPost.coverImage}
-          alt={trendingPost.title}
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 p-8 md:p-12 flex flex-col justify-center h-full text-white">
-          <div className="text-sm font-semibold mb-2 inline-block">
-            Trending
-          </div>
-          <h1 className="text-3xl text-primary md:text-5xl font-bold mb-4 max-w-2xl group-hover:underline">
-            {trendingPost.title}
-          </h1>
-          <p className="text-lg max-w-2xl">
-            {trendingPost.excerpt}
-          </p>
-        </div>
-      </section>
-    </Link>
+      <TrendingCarousel slides={trendingPosts} />
 
 
       {/* Featured Posts Section */}
