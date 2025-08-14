@@ -76,6 +76,76 @@ body {
 }
 
 /* ===========================================
+  TABLE STYLING 
+=========================================== */
+@layer base {
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: rgb(var(--card));
+    color: rgb(var(--foreground));
+    border: 1px solid rgb(var(--border));
+    border-radius: 0.75rem;
+    overflow: hidden;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  thead {
+    background-color: rgb(var(--background));
+  }
+
+  thead th {
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: left;
+    border-bottom: 2px solid rgb(var(--border));
+    color: rgb(var(--foreground));
+    letter-spacing: 0.3px;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: rgba(var(--accent) / 0.15);
+  }
+
+  tbody tr:hover {
+    background-color: rgba(var(--primary) / 0.18);
+  }
+
+  tbody td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgb(var(--border));
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  /* Last row should not have a bottom border */
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Dark mode adjustments */
+  html.dark thead {
+    background-color: rgb(var(--card));
+  }
+
+  html.dark tbody tr:nth-child(even) {
+    background-color: rgba(var(--accent) / 0.08);
+  }
+
+  html.dark tbody tr:hover {
+    background-color: rgba(var(--primary) / 0.25);
+  }
+}
+
+
+/* ===========================================
   TYPOGRAPHY
 =========================================== */
 @layer base {
