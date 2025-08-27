@@ -141,6 +141,35 @@ body {
   html.dark tbody tr:hover {
     background-color: rgba(var(--primary) / 0.25);
   }
+  
+  .post-content a {
+    color: rgb(var(--primary)); /* light blue */
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .post-content a:hover {
+    color: rgb(var(--secondary)); /* pink on hover */
+    text-decoration: underline;
+  }
+
+  html.dark .post-content a {
+    color: rgb(var(--primary));
+  }
+
+  html.dark .post-content a:hover {
+    color: rgb(var(--secondary));
+  }
+
+  blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 12px;
+    margin: 16px 0;
+    color: #555;
+    font-style: italic;
+  }
+  
 }
 
 /* ===========================================
