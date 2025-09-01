@@ -54,7 +54,7 @@ export default async function Post({ params: { slug } }) {
             priority
           />
        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/95 via-black/70 to-transparent" />
           {/* This container is now constrained to match the page width */}
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

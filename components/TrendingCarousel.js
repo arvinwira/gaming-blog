@@ -35,26 +35,26 @@ export default function TrendingCarousel({ slides }) {
           {slides.map((post, index) => (
             <div className="embla__slide p-4" key={index}>
               <Link href={`/blog/${post.slug}`} className="block group">
-                <section className="relative bg-card border border-border rounded-3xl shadow-2xl shadow-secondary overflow-hidden h-[500px]">
-                  <Image
-                    src={post.coverImage}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/50" />
-                    <div className="relative z-10 p-8 md:p-12 flex flex-col justify-center h-full text-white">
-                     <div className="text-sm font-semibold mb-2 inline-block">
-                      Trending
-                      </div>
-                      <h1 className="text-3xl text-primary md:text-5xl font-bold mb-4 max-w-2xl group-hover:underline">
-                      {post.title}
-                    </h1>
-                    <p className="text-lg max-w-2xl">
-                      {post.excerpt}
-                    </p>
+              <section className="relative bg-card border border-border rounded-3xl shadow-2xl shadow-secondary overflow-hidden h-[500px]">
+                <Image
+                  src={post.coverImage}
+                  alt={post.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Bottom gradient overlay */}
+                <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/95 via-black/80 to-transparent" />
+
+                <div className="relative z-10 p-8 md:p-12 flex flex-col justify-end h-full text-white">
+                  <div className="text-sm font-semibold mb-2 inline-block">
+                    Trending
                   </div>
-                </section>
+                  <h1 className="text-3xl text-primary md:text-5xl font-bold max-w-2xl group-hover:underline">
+                    {post.title}
+                  </h1>
+                </div>
+              </section>
               </Link>
             </div>
           ))}

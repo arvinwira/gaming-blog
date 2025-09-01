@@ -1,12 +1,13 @@
-import { getPosts } from '@/lib/posts'; 
+// app/categories/page.js
+import { getPosts, HIERARCHICAL_CATEGORIES } from '@/lib/posts'; 
 import CategoryFilter from '@/components/CategoryFilter';
 
 export default function CategoriesPage({ searchParams }) {
   const query = searchParams?.q || '';
   const currentPage = Number(searchParams?.page) || 1;
-  const category = searchParams?.category || null; 
+  const category = searchParams?.category || null;
 
-  const { posts, totalPages, categories } = getPosts({ query, currentPage, category });
+  const { posts, totalPages } = getPosts({ query, currentPage, category });
 
   return (
     <div className="bg-background min-h-screen text-foreground p-4 sm:p-6 md:p-8">
@@ -16,13 +17,13 @@ export default function CategoriesPage({ searchParams }) {
             Categories
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Filter by category to find what you are looking for.
+            Explore posts by category.
           </p>
         </header>
 
         <CategoryFilter 
           posts={posts} 
-          categories={categories} 
+          categories={HIERARCHICAL_CATEGORIES} // Pass the new structure
           totalPages={totalPages}
           currentPage={currentPage}
         />

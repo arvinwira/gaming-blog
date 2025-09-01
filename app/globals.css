@@ -183,25 +183,33 @@ body {
 
 @media (max-width: 768px) {
   table {
-    font-size: 0.9rem; /* slightly smaller text */
+    font-size: 1.125rem; /* ~18px */
   }
-
-  thead th,
+  
+  thead th {
+    font-size: 1.125rem;
+  }
+  
   tbody td {
-    padding: 0.75rem 1rem;
+    font-size: 1.125rem;
+    line-height: 1.8; /* optional for readability */
   }
-}
+}  
 
 @media (max-width: 480px) {
   table {
-    font-size: 0.85rem;
+    font-size: 1.125rem; /* ~18px */
   }
-
-  thead th,
+  
+  thead th {
+    font-size: 1.125rem;
+  }
+  
   tbody td {
-    padding: 0.5rem 0.75rem;
+    font-size: 1.125rem;
+    line-height: 1.8; /* optional for readability */
   }
-}
+}  
 
 hr {
   border: none;
@@ -274,7 +282,6 @@ html.dark hr {
   }
   
   .prose blockquote::before {
-    content: "“";
     font-size: 2.75rem;
     line-height: 1;
     position: absolute;
