@@ -9,7 +9,6 @@ import ReadingProgressBar from '@/components/ReadingProgressBar';
 import TableOfContents from '@/components/TableOfContents'; 
 import readingTime from 'reading-time';
 import Script from 'next/script';
-import ShareThisInitializer from '@/components/ShareThis';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -85,10 +84,6 @@ export default async function Post({ params: { slug } }) {
          </div>
         </header>
 
-        <div className="max-w-3xl mx-auto px-4 mb-12 overflow-visible">
-          <div className="sharethis-inline-share-buttons"></div>
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 pb-16 lg:grid lg:grid-cols-4 lg:gap-12">
           {/* Post Content */}
           <div className="lg:col-span-3">
@@ -102,8 +97,6 @@ export default async function Post({ params: { slug } }) {
             <TableOfContents />
           </aside>
         </div>
-        <div className="sharethis-inline-reaction-buttons"></div>
-        <ShareThisInitializer /> 
 
         {/* More Posts */}
         <section className="py-16 border-t border-border">

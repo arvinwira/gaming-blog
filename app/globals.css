@@ -40,25 +40,7 @@ body {
   color: rgb(var(--foreground));
 }
 
-.sharethis-inline-share-buttons .st-btn {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: inline-block !important;
-}
 
-.sharethis-inline-share-buttons.st-hidden {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  height: auto !important;
-}
-
-.sharethis-inline-reaction-buttons.st-hidden {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  height: auto !important;
-}
 
 /* Embla Carousel Base Styles */
 .embla {
@@ -233,6 +215,21 @@ html.dark hr {
   );
 }
 
+.affiliate-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background: linear-gradient(90deg, #FF9900, #FFB84D);
+  color: #131A22; /* Amazon black */
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.affiliate-btn:hover {
+  background: linear-gradient(90deg, #e68a00, #ff9900);
+  transform: translateY(-2px);
+}
 
 
 /* ===========================================
