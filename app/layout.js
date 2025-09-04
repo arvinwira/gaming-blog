@@ -46,6 +46,7 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/favicon.ico" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='impact-site-verification' content='3336caa7-0f7a-4261-8749-9181049ba624'></meta>
        <script 
           async 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
