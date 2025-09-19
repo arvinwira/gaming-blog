@@ -147,7 +147,7 @@ export default function CategoryFilter({ posts, categories, totalPages, currentP
                 <h3 className="text-lg font-semibold text-foreground group-hover:text-primary mb-2">
                   {post.title}
                 </h3>
-                <p className="text-sm mt-4 text-muted-foreground max-h-[8 rem] overflow-hidden">
+                <p className="text-sm mt-4 text-muted-foreground max-h-[8rem] overflow-hidden">
                   {post.excerpt}
                 </p>
               </div>
