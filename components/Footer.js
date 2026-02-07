@@ -14,7 +14,7 @@ export default function Footer() {
 
         {/* Right Column: Copyright and Links */}
         <div className="text-center md:text-right">
-          <p className="text-sm">&copy; 2025 Chronic Reload Blog.</p>
+          <p className="text-sm">&copy; 2026 Chronic Reload Blog.</p>
           <div className="mt-4 space-x-6 text-xs">
             <Link href="/privacy-policy" className="hover:underline text-foreground text-primary">
               Privacy Policy
