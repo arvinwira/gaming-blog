@@ -1,14 +1,19 @@
-import Head from 'next/head'
 import Link from 'next/link'
+
+export const metadata = {
+  title: '404 - Page Not Found',
+  robots: {
+    index: false,
+    follow: false,
+  },
+  other: {
+    'google-adsense-account': 'ca-pub-8887590102646300'
+  }
+}
 
 export default function NotFound() {
   return (
     <>
-      <Head>
-        <meta name="google-adsense-account" content="ca-pub-8887590102646300" data-ad-client="off" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>404 - Page Not Found</title>
-      </Head>
 
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] text-center px-4">
         <h1

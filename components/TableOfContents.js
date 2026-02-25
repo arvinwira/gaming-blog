@@ -13,7 +13,7 @@ export default function TableOfContents() {
   }, []);
 
   return (
-    <nav className="sticky top-24">
+    <nav>
       <h3 className="font-bold text-lg mb-4">Table of Contents</h3>
       <ul>
         {headings.map((heading, index) => (
