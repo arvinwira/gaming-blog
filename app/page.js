@@ -38,7 +38,7 @@ export default function BlogHome() {
     .slice(0, 5);
 
   return (
-    <div className="bg-background text-primary pt-24">
+    <div className="bg-background text-primary pt-24 overflow-x-hidden">
       {/* Hero Section - Trending Post */}
       <TrendingCarousel slides={trendingPosts} />
 
