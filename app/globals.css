@@ -357,9 +357,49 @@ html.dark hr {
     margin-top: 1rem;
   }
 
-  ul {
-    list-style-type: disc;
-    padding-left: 1.5em;
+  .prose ul {
+    list-style: none;
+    /* override default */
+    padding-left: 0;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
+
+  .prose li {
+    position: relative;
+    padding-left: 1.75em;
+    margin-bottom: 0.75em;
+    line-height: 1.8;
+  }
+
+  .prose li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    /* vertical alignment */
+    height: 0.5em;
+    width: 0.5em;
+    border-radius: 50%;
+    background-color: rgb(var(--primary));
+    box-shadow: 0 0 8px rgba(var(--primary), 0.6);
+    transition: all 0.3s ease;
+  }
+
+  /* Different color for dark mode bullets to pop */
+  .dark .prose li::before {
+    background-color: rgb(var(--secondary));
+    box-shadow: 0 0 10px rgba(var(--secondary), 0.8);
+  }
+
+  .prose li ul {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+
+  /* Optional subtle hover effect for lists */
+  .prose li:hover::before {
+    transform: scale(1.3);
   }
 
 

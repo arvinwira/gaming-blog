@@ -19,7 +19,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params: { slug } }) {
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
   const { frontmatter } = await getPostData(slug);
   return {
     title: frontmatter.title,
@@ -27,7 +28,8 @@ export async function generateMetadata({ params: { slug } }) {
   };
 }
 
-export default async function Post({ params: { slug } }) {
+export default async function Post({ params }) {
+  const { slug } = await params;
   const { code, frontmatter } = await getPostData(slug);
 
   const { posts: allPosts } = getPosts();

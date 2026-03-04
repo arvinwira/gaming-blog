@@ -6,6 +6,7 @@ import PriceBadge from './mdx/PriceBadge';
 import AffiliateButton from './mdx/AffiliateButton';
 import KeyHighlights from './mdx/KeyHighlights';
 import InternalLink from './mdx/InternalLink';
+import QuickGuide from './mdx/QuickGuide';
 
 const components = {
   ProsCons,
@@ -13,6 +14,7 @@ const components = {
   AffiliateButton,
   KeyHighlights,
   InternalLink,
+  QuickGuide,
 };
 
 export function MDXContent({ code }) {

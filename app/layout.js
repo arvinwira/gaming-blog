@@ -47,34 +47,16 @@ export const metadata = {
     icon: '/favicon.ico',
     apple: '/favicon.ico',
   },
+  verification: {
+    other: {
+      "p:domain_verify": "9ba64d4b8e1566ef6abfdbf30e0f2c35",
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
-          crossOrigin="anonymous">
-        </script>
-
-        <meta name="p:domain_verify" content="9ba64d4b8e1566ef6abfdbf30e0f2c35"/>
-
-        {/* GA4 */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-YC0HP8ZFM9"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YC0HP8ZFM9');
-        `}
-        </Script>
-      </head>
       <body className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased text-foreground bg-background`}>
         <ThemeProvider>
           <div className="flex flex-col min-h-screen">
@@ -84,6 +66,26 @@ export default function RootLayout({ children }) {
           </div>
         </ThemeProvider>
         <Analytics />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8887590102646300"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
+        {/* GA4 */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-YC0HP8ZFM9"
+          strategy="lazyOnload"
+        />
+        <Script id="ga4-init" strategy="lazyOnload">
+          {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YC0HP8ZFM9');
+        `}
+        </Script>
       </body>
     </html>
   );
