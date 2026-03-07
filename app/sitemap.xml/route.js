@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { CATEGORY_META } from '@/lib/posts';
 
 function getPosts() {
   const postsDirectory = path.join(process.cwd(), 'posts');
@@ -24,29 +25,43 @@ export async function GET() {
   const posts = getPosts();
   const siteUrl = 'https://chronicreload.com';
 
+  // Base static routes
   const staticRoutes = [
-    { url: siteUrl, lastModified: '2025-08-01' }, // manually set unless changed
+    { url: siteUrl, lastModified: '2025-08-01' },
     { url: `${siteUrl}/about`, lastModified: '2025-08-01' },
     { url: `${siteUrl}/contact`, lastModified: '2025-08-01' },
     { url: `${siteUrl}/categories`, lastModified: '2025-08-01' },
+    { url: `${siteUrl}/games`, lastModified: '2025-08-01' },
+    { url: `${siteUrl}/hardware`, lastModified: '2025-08-01' },
+    { url: `${siteUrl}/news`, lastModified: '2025-08-01' },
   ];
 
+  // Dynamic Subcategory Routes from CATEGORY_META
+  const categoryRoutes = Object.keys(CATEGORY_META).map(cat => {
+    const hub = CATEGORY_META[cat].parent;
+    return {
+      url: `${siteUrl}/${hub}/${encodeURIComponent(cat)}`,
+      lastModified: '2025-08-01', // Ideally would track category modification times, using static for now
+    };
+  });
+
+  // Blog Posts
   const postRoutes = posts.map(({ slug, lastModified }) => ({
     url: `${siteUrl}/blog/${slug}`,
     lastModified,
   }));
 
-  const allRoutes = [...staticRoutes, ...postRoutes];
+  const allRoutes = [...staticRoutes, ...categoryRoutes, ...postRoutes];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${allRoutes
-  .map(route => `
+      .map(route => `
     <url>
       <loc>${route.url}</loc>
       <lastmod>${route.lastModified}</lastmod>
     </url>`)
-  .join('')}
+      .join('')}
 </urlset>`;
 
   return new Response(sitemap, {
