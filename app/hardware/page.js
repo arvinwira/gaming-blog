@@ -28,7 +28,7 @@ export default function HardwareHub({ searchParams }) {
                             Hardware & Gear
                         </h1>
                         <p className="text-muted-foreground text-lg leading-relaxed">
-                            We test the latest gaming peripherals and PC components so you don&apos;t have to. Explore our in-depth reviews, curated buying guides, and setup recommendations.
+                            We find the latest gaming peripherals and PC components so you don&apos;t have to. Explore our in-depth reviews, curated buying guides, and setup recommendations.
                         </p>
                         <p className="text-sm text-foreground/70 mt-4 font-medium">{totalPosts} Hardware Guides</p>
                     </div>
