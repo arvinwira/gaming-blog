@@ -34,6 +34,7 @@ const NAV_ITEMS = [
       { label: 'Controllers', href: '/hardware/Controllers' },
       { label: 'Budget Gaming Gear', href: '/hardware/Budget' },
       { label: 'PC Builds', href: '/hardware/PC' },
+      { label: 'Gaming Laptops', href: '/hardware/Laptops' },
     ],
   },
   {
@@ -76,7 +77,7 @@ function DesktopDropdown({ item }) {
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-1 min-w-[220px] glass border border-border rounded-xl shadow-xl py-2 animate-fade-in-up z-50">
+        <div className="absolute top-full left-0 mt-1 min-w-[220px] bg-card border border-border rounded-xl shadow-xl py-2 animate-fade-in-up z-50">
           {item.children.map(child => (
             <Link
               key={child.href}
@@ -165,7 +166,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed w-full top-0 z-50 transition-all duration-300 glass border-b border-border shadow-sm">
+    <header className="fixed w-full top-0 z-50 transition-all duration-300 bg-card border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -225,7 +226,7 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className="lg:hidden glass animate-fade-in-up border-b border-border absolute w-full left-0 top-20 shadow-lg max-h-[70vh] overflow-y-auto custom-scrollbar">
+        <div className="lg:hidden bg-card animate-fade-in-up border-b border-border absolute w-full left-0 top-20 shadow-lg max-h-[70vh] overflow-y-auto custom-scrollbar">
           <nav className="px-4 pt-2 pb-6 space-y-1" style={{ fontFamily: 'var(--font-heading)' }}>
             {NAV_ITEMS.map(item => (
               <MobileAccordion key={item.label} item={item} onNavigate={() => setMenuOpen(false)} />
