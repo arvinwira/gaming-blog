@@ -120,7 +120,7 @@ export default function BlogHome() {
 
   // Game categories for the Explore grid
   const gameCategories = ['Hidden Gem', 'Cozy Games', 'Indie', 'Multiplayer', 'Survival', 'RPG', 'Horror', 'Free To Play', 'Singleplayer', 'Roguelike'];
-  const hardwareCategories = ['Keyboards', 'Headsets', 'Mouse', 'Monitors', 'Controllers', 'Budget'];
+  const hardwareCategories = ['Laptops', 'PC', 'Keyboards', 'Headsets', 'Mouse', 'Monitors', 'Controllers', 'Budget'];
 
   return (
     <div className="bg-background text-primary pt-24 overflow-x-hidden">

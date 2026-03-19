@@ -14,7 +14,7 @@ export default function HardwareHub({ searchParams }) {
     const { posts, subcategories, totalPages, totalPosts } = getPostsForHub('hardware', currentPage);
 
     // Group subcategories logically for better UX
-    const hardwareCategories = ['Keyboards', 'Mouse', 'Headsets', 'Monitors', 'Controllers', 'PC', 'Budget'];
+    const hardwareCategories = ['Laptops', 'PC', 'Keyboards', 'Mouse', 'Headsets', 'Monitors', 'Controllers', 'Budget'];
 
     return (
         <div className="bg-background min-h-screen text-foreground pt-24 overflow-x-hidden">
