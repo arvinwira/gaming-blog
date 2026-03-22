@@ -79,15 +79,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-border pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm">&copy; 2026 Chronic Reload Blog.</p>
-          <div className="flex gap-6 text-sm">
-            <Link href="https://x.com/chronic_reload" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              X (Twitter)
-            </Link>
-            <Link href="https://www.tiktok.com/@chronicreload" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-              TikTok
-            </Link>
+        <div className="border-t border-border pt-8 flex flex-col gap-6">
+          <p className="text-xs text-center sm:text-left text-muted-foreground/80 max-w-4xl">
+            We improve our products and advertising by using Microsoft Clarity to see how you use our website. By using our site, you agree that we and Microsoft can collect and use this data. Our <Link href="/privacy-policy" className="underline hover:text-primary">privacy statement</Link> has more details.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-sm">&copy; 2026 Chronic Reload Blog.</p>
+            <div className="flex gap-6 text-sm">
+              <Link href="https://x.com/chronic_reload" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                X (Twitter)
+              </Link>
+              <Link href="https://www.tiktok.com/@chronicreload" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                TikTok
+              </Link>
+            </div>
           </div>
         </div>
       </div>

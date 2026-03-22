@@ -39,6 +39,17 @@ export default function PrivacyPolicyPage() {
             it and its partners to serve more relevant ads.
           </p>
           <p>
+            We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and interact with our website through behavioral metrics, heatmaps, and session replay to improve and market our products/services. Website usage data is captured using first and third-party cookies and other tracking technologies to determine the popularity of products/services and online activity. Additionally, we use this information for site optimization, fraud/security purposes, and advertising. For more information about how Microsoft collects and uses your data, visit the{' '}
+            <a
+              href="https://privacy.microsoft.com/en-US/privacystatement"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary hover:underline"
+            >
+              Microsoft Privacy Statement
+            </a>.
+          </p>
+          <p>
             You may opt out of personalized advertising by visiting{' '}
             <a
               href="https://www.google.com/settings/ads"
@@ -94,7 +105,7 @@ export default function PrivacyPolicyPage() {
             </a>
           </p>
 
-          <p className="italic">Last updated: July 2025</p>
+          <p className="italic">Last updated: March 2026</p>
         </div>
       </div>
     </div>
