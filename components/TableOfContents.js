@@ -10,7 +10,11 @@ export default function TableOfContents() {
   useEffect(() => {
     const headingElements = Array.from(
       document.querySelectorAll('.prose h2, .prose h3')
-    );
+    ).filter((el) => {
+      const text = el.innerText.trim();
+      const isProsOrCons = /^(pros?|cons?|pros?\s*&\s*cons?|pros?\s*and\s*cons?|pros?\/cons?):?$/i.test(text);
+      return !isProsOrCons;
+    });
     setHeadings(headingElements);
 
     const handleIntersect = (entries) => {

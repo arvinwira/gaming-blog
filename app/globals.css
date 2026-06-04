@@ -532,3 +532,19 @@ html.dark hr {
     transform: translateY(0);
   }
 }
+
+@keyframes shine {
+  0% {
+    transform: translateX(-200%);
+  }
+  30% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-shine {
+  animation: shine 4s infinite ease-in-out;
+}
