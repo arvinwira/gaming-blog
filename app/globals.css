@@ -2,58 +2,125 @@
 
 /* ===========================================
   LIGHT MODE COLORS
+  Palette source:
+    Dark teal    #1C3A48  → foreground / dark text
+    Warm linen   #D1CCBC  → accent / section tint
+    Sky blue     #6BC3D6  → secondary accent
+    Muted sage   #7A8C85  → muted text
+    Vivid cerulean #1E98C0 → primary action
 =========================================== */
 :root {
-  --background: 248 250 252;
-  /* #f8fafc -> very light gray-blue for a cleaner look */
-  --card: 255 255 255;
-  /* #ffffff -> pure white for high contrast */
-  --foreground: 15 23 42;
-  /* #0f172a -> deep slate for readability */
-  --muted-foreground: 100 116 139;
-  /* #64748b -> softer gray for secondary text */
-  --primary: 59 130 246;
-  /* #3b82f6 -> vibrant blue */
+  /* Surfaces — warm linen-tinted, not cold white */
+  --background: 248 246 240;
+  /* off-white with a hint of the linen warmth */
+  --card: 255 254 250;
+  /* near-white cards pop off the linen background */
+  --accent: 209 204 188;
+  /* the linen swatch — used for section alternation */
+
+  /* Text */
+  --foreground: 28 58 72;
+  /* the dark teal — rich, distinctive, not generic black */
+  --muted-foreground: 122 140 133;
+  /* the sage — muted but characterful */
+
+  /* Brand */
+  --primary: 30 152 192;
+  /* vivid cerulean — the action color, confident */
   --primary-foreground: 255 255 255;
-  /* #ffffff -> white */
-  --secondary: 168 85 247;
-  /* #a855f7 -> vibrant purple for accents */
-  --secondary-foreground: 255 255 255;
-  /* #ffffff -> white */
-  --accent: 226 232 240;
-  /* #e2e8f0 -> light slate for subtle backgrounds */
-  --border: 226 232 240;
-  /* #e2e8f0 -> visible but soft borders */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.3);
+  --secondary: 107 195 214;
+  /* sky blue — softer supporting accent */
+  --secondary-foreground: 28 58 72;
+
+  /* Borders */
+  --border: 218 213 199;
+  /* linen-tinted border — warm, not gray */
+
+  /* State colors */
+  --success: 14 160 95;
+  /* teal-green — sits naturally next to cerulean */
+  --success-foreground: 255 255 255;
+  --warning: 195 128 10;
+  /* amber — warm contrast to the cool palette */
+  --warning-foreground: 255 255 255;
+  --error: 210 40 55;
+  /* vivid crimson */
+  --error-foreground: 255 255 255;
+
+  /* Focus */
+  --focus-ring: 30 152 192;
+
+  /* Link */
+  --link: 18 132 168;
+  /* slightly deeper cerulean for inline links */
+
+  /* Disabled */
+  --disabled: 190 186 172;
+  /* desaturated linen */
+
+  /* Glass */
+  --glass-bg: rgba(255, 254, 250, 0.88);
+  --glass-border: rgba(30, 152, 192, 0.18);
 }
 
 /* ===========================================
   DARK MODE COLORS
+  Palette source: same 5 colors, mapped for dark
+    Dark teal   #1C3A48  → primary surface
+    Warm linen  #D1CCBC  → foreground text base
+    Sky blue    #6BC3D6  → secondary accent (vivid on dark)
+    Muted sage  #7A8C85  → muted text
+    Vivid cerulean #1E98C0 → primary (stays vivid)
 =========================================== */
 html.dark {
-  --background: 9 9 11;
-  /* #09090b -> near black for deep contrast */
-  --card: 24 24 27;
-  /* #18181b -> dark gray/zinc for cards */
-  --foreground: 250 250 250;
-  /* #fafafa -> near white for crisp text */
-  --muted-foreground: 161 161 170;
-  /* #a1a1aa -> zinc-400 for balanced muted text */
-  --primary: 59 130 246;
-  /* #3b82f6 -> vibrant blue */
-  --primary-foreground: 255 255 255;
-  /* #ffffff -> white */
-  --secondary: 168 85 247;
-  /* #a855f7 -> vibrant purple */
-  --secondary-foreground: 255 255 255;
-  /* #ffffff -> white */
-  --accent: 39 39 42;
-  /* #27272a -> zinc-800 for hover states */
-  --border: 39 39 42;
-  /* #27272a -> subtle borders */
-  --glass-bg: rgba(9, 9, 11, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Surfaces — deep black, like light mode's white */
+  --background: 10 10 12;
+  /* near-black */
+  --card: 18 18 22;
+  /* dark charcoal — elevated surfaces */
+  --accent: 26 26 32;
+  /* slightly lighter charcoal for section alternation */
+
+  /* Text — warm linen family, not cold white */
+  --foreground: 238 234 224;
+  /* light linen-warm near-white */
+  --muted-foreground: 148 162 155;
+  /* lighter sage for secondary text */
+
+  /* Brand — cerulean and sky blue both vivid on dark bg */
+  --primary: 40 172 212;
+  /* cerulean brightened for dark bg */
+  --primary-foreground: 10 10 12;
+  --secondary: 107 195 214;
+  /* sky blue — distinct lighter accent */
+  --secondary-foreground: 10 10 12;
+
+  /* Borders */
+  --border: 38 42 48;
+  /* dark charcoal border */
+
+  /* State colors */
+  --success: 26 210 118;
+  --success-foreground: 10 10 12;
+  --warning: 242 182 14;
+  --warning-foreground: 10 10 12;
+  --error: 242 68 82;
+  --error-foreground: 10 10 12;
+
+  /* Focus */
+  --focus-ring: 40 172 212;
+
+  /* Link */
+  --link: 107 195 214;
+  /* sky blue — readable and on-palette */
+
+  /* Disabled */
+  --disabled: 45 48 55;
+  /* dark charcoal-gray */
+
+  /* Glass */
+  --glass-bg: rgba(18, 18, 22, 0.92);
+  --glass-border: rgba(107, 195, 214, 0.20);
 }
 
 /* ===========================================
@@ -72,6 +139,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Selection highlight */
+::selection {
+  background-color: rgba(var(--primary) / 0.2);
+  color: rgb(var(--foreground));
+}
+
+/* Global focus-visible ring */
+:focus-visible {
+  outline: 2px solid rgb(var(--focus-ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reset focus-visible on elements that have custom focus styles */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgb(var(--focus-ring));
+  outline-offset: 2px;
+}
+
 /* Embla Carousel Base Styles */
 .embla {
   overflow: hidden;
@@ -86,6 +173,12 @@ body {
 .embla__slide {
   flex: 0 0 90%;
   backface-visibility: hidden;
+}
+
+@media (min-width: 640px) {
+  .embla__slide {
+    flex: 0 0 100%;
+  }
 }
 
 /* ===========================================
@@ -157,8 +250,7 @@ body {
   }
 
   .post-content a {
-    color: rgb(var(--primary));
-    /* light blue */
+    color: rgb(var(--link));
     text-decoration: underline;
     font-weight: 500;
     transition: color 0.2s ease;
@@ -166,12 +258,11 @@ body {
 
   .post-content a:hover {
     color: rgb(var(--secondary));
-    /* pink on hover */
     text-decoration: underline;
   }
 
   html.dark .post-content a {
-    color: rgb(var(--primary));
+    color: rgb(var(--link));
   }
 
   html.dark .post-content a:hover {
@@ -179,10 +270,10 @@ body {
   }
 
   blockquote {
-    border-left: 4px solid #ccc;
+    border-left: 4px solid rgb(var(--border));
     padding-left: 12px;
     margin: 16px 0;
-    color: #555;
+    color: rgb(var(--muted-foreground));
     font-style: italic;
   }
 
@@ -238,7 +329,7 @@ hr {
   height: 2px;
   background: linear-gradient(to right,
       transparent,
-      rgba(0, 0, 0, 0.25),
+      rgba(var(--border), 0.8),
       transparent);
   border-radius: 2px;
   margin: 3rem 0;
@@ -247,7 +338,7 @@ hr {
 html.dark hr {
   background: linear-gradient(to right,
       transparent,
-      rgba(255, 255, 255, 0.25),
+      rgba(var(--border), 0.6),
       transparent);
 }
 
@@ -256,10 +347,8 @@ html.dark hr {
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  background: rgba(255, 153, 0, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 153, 0, 0.4);
+  background: rgba(255, 153, 0, 0.12);
+  border: 1px solid rgba(255, 153, 0, 0.35);
   color: #FF9900;
   font-weight: 600;
   border-radius: 12px;
@@ -281,13 +370,12 @@ html.dark hr {
 =========================================== */
 @layer base {
   .prose {
-    font-family: var(--font-serif);
+    font-family: Georgia, 'Times New Roman', serif;
     font-size: large;
   }
 
   .prose p {
-    line-height: 2;
-    text-align: justify;
+    line-height: 1.85;
   }
 
   .prose h2,
@@ -306,25 +394,20 @@ html.dark hr {
     position: relative;
     font-style: italic;
     padding: 1.25em 1.5em;
-    background-color: #f9f9f9;
-    /* Light mode bg */
-    color: #333;
-    /* Light mode text */
-    border-left: 4px solid #a855f7;
-    /* violet-500 */
+    background-color: rgba(var(--accent) / 0.5);
+    color: rgb(var(--foreground));
+    border-left: 4px solid rgb(var(--primary));
     border-radius: 0.5rem;
     margin: 1.5em 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: all 0.3s ease;
   }
 
   .dark .prose blockquote {
-    background-color: rgba(255, 255, 255, 0.05);
-    /* Dark mode bg */
-    color: #e0e0e0;
-    /* Dark mode text */
-    border-left-color: #a855f7;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    background-color: rgba(var(--primary) / 0.06);
+    color: rgb(var(--foreground));
+    border-left-color: rgb(var(--primary));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .prose blockquote::before {
@@ -333,8 +416,8 @@ html.dark hr {
     position: absolute;
     top: 0.2rem;
     left: 1rem;
-    color: #a855f7;
-    opacity: 0.4;
+    color: rgb(var(--primary));
+    opacity: 0.3;
     font-family: Georgia, serif;
   }
 
@@ -382,14 +465,14 @@ html.dark hr {
     width: 0.5em;
     border-radius: 50%;
     background-color: rgb(var(--primary));
-    box-shadow: 0 0 8px rgba(var(--primary), 0.6);
+    box-shadow: 0 0 6px rgba(var(--primary), 0.4);
     transition: all 0.3s ease;
   }
 
   /* Different color for dark mode bullets to pop */
   .dark .prose li::before {
-    background-color: rgb(var(--secondary));
-    box-shadow: 0 0 10px rgba(var(--secondary), 0.8);
+    background-color: rgb(var(--primary));
+    box-shadow: 0 0 8px rgba(var(--primary), 0.5);
   }
 
   .prose li ul {
@@ -415,87 +498,122 @@ html.dark hr {
     background-color: rgb(var(--background));
   }
 
-  /* light gray-blue / almost black */
   .bg-card {
     background-color: rgb(var(--card));
   }
 
-  /* white / dark navy */
   .bg-primary {
     background-color: rgb(var(--primary));
   }
 
-  /* light blue */
   .bg-secondary {
     background-color: rgb(var(--secondary));
   }
 
-  /* pink */
   .bg-accent {
     background-color: rgb(var(--accent));
   }
-
-  /* light gray */
 
   /* Text */
   .text-foreground {
     color: rgb(var(--foreground));
   }
 
-  /* dark text / light text */
   .text-muted-foreground {
     color: rgb(var(--muted-foreground));
   }
 
-  /* muted gray-blue */
   .text-primary {
     color: rgb(var(--primary));
   }
 
-  /* light blue */
   .text-primary-foreground {
     color: rgb(var(--primary-foreground));
   }
 
-  /* white / almost black */
   .text-secondary {
     color: rgb(var(--secondary));
   }
 
-  /* pink */
   .text-secondary-foreground {
     color: rgb(var(--secondary-foreground));
   }
-
-  /* white / almost black */
 
   /* Borders */
   .border-border {
     border-color: rgb(var(--border));
   }
 
-  /* light gray-blue / dark blue-gray */
+  /* warm border */
   .border-primary {
     border-color: rgb(var(--primary));
   }
 
-  /* light blue */
+  /* amber */
   .border-secondary {
     border-color: rgb(var(--secondary));
   }
 
-  /* pink */
+  /* teal */
+  .border-success {
+    border-color: rgb(var(--success));
+  }
+
+  .border-warning {
+    border-color: rgb(var(--warning));
+  }
+
+  .border-error {
+    border-color: rgb(var(--error));
+  }
+
+  /* State backgrounds */
+  .bg-success {
+    background-color: rgb(var(--success));
+  }
+
+  .text-success {
+    color: rgb(var(--success));
+  }
+
+  .bg-warning {
+    background-color: rgb(var(--warning));
+  }
+
+  .text-warning {
+    color: rgb(var(--warning));
+  }
+
+  .bg-error {
+    background-color: rgb(var(--error));
+  }
+
+  .text-error {
+    color: rgb(var(--error));
+  }
+
+  /* Disabled */
+  .text-disabled {
+    color: rgb(var(--disabled));
+  }
+
+  .border-disabled {
+    border-color: rgb(var(--disabled));
+  }
 
   .shadow-secondary {
-    box-shadow: 0 10px 30px -5px rgb(var(--secondary) / 0.2),
-      0 4px 10px -4px rgb(var(--secondary) / 0.1);
+    box-shadow: 0 10px 30px -5px rgb(var(--primary) / 0.15),
+      0 4px 10px -4px rgb(var(--primary) / 0.08);
   }
 
   .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
+    background: rgb(var(--card));
+    border: 1px solid rgb(var(--border));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  html.dark .glass {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .animate-fade-in-up {

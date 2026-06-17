@@ -45,7 +45,7 @@ export default async function Post({ params }) {
       <ReadingProgressBar />
       <article className="bg-background text-foreground pb-12 pt-24">
         {/* Full Width Hero Section */}
-        <header className="relative w-full min-h-[500px] md:min-h-[70vh] mb-16 shadow-2xl flex flex-col justify-center">
+        <header className="relative w-full min-h-[60vh] sm:min-h-[500px] md:min-h-[70vh] mb-16 shadow-2xl flex flex-col justify-center">
           <div className="absolute inset-0 z-0">
             <Image
               src={frontmatter.coverImage}
@@ -91,6 +91,26 @@ export default async function Post({ params }) {
         </header>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:flex lg:gap-16">
+          {/* Mobile/Tablet: Collapsible TOC above content */}
+          <div className="lg:hidden mb-8">
+            <details className="bg-card border border-border/50 rounded-2xl overflow-hidden group">
+              <summary className="px-5 py-4 font-bold text-primary cursor-pointer flex items-center justify-between select-none" style={{ fontFamily: 'var(--font-heading)' }}>
+                <span className="flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
+                  </svg>
+                  Navigate this article
+                </span>
+                <svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <div className="px-5 pb-4">
+                <TableOfContents />
+              </div>
+            </details>
+          </div>
+
           {/* Post Content */}
           <div className="lg:w-[70%] xl:w-[75%]">
             <div className="prose dark:prose-invert prose-lg max-w-none prose-headings:font-heading prose-a:text-primary hover:prose-a:text-secondary">
@@ -115,13 +135,15 @@ export default async function Post({ params }) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {morePosts.map(post => (
-                <Link href={`/blog/${post.slug}`} key={post.slug} className="group block glass rounded-[2rem] overflow-hidden border border-border/50 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 transition-all duration-300">
-                  <div className="relative w-full h-56 overflow-hidden">
-                    <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2" style={{ fontFamily: 'var(--font-heading)' }}>{post.title}</h3>
-                    <p className="text-muted-foreground text-sm line-clamp-3">{post.excerpt}</p>
+                <Link href={`/blog/${post.slug}`} key={post.slug} className="group block h-full">
+                  <div className="h-full bg-card shadow-md border border-border/40 rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/50 flex flex-col">
+                    <div className="relative w-full h-56 overflow-hidden">
+                      <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                    </div>
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2" style={{ fontFamily: 'var(--font-heading)' }}>{post.title}</h3>
+                      <p className="text-muted-foreground text-sm line-clamp-3 flex-grow">{post.excerpt}</p>
+                    </div>
                   </div>
                 </Link>
               ))}

@@ -68,7 +68,7 @@ export default function AnimatedThemeSwitcher() {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="w-10 h-10 p-2 bg-primary rounded-full flex items-center justify-center"
+      className="w-10 h-10 p-2 bg-primary text-primary-foreground rounded-full flex items-center justify-center"
       onClick={toggleTheme}
     >
       <AnimatePresence initial={false} mode="wait">

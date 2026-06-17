@@ -57,22 +57,19 @@ export default function CategoryFilter({ posts, categories, totalPages, currentP
               key={mainCategory}
               className="relative flex flex-col bg-card shadow-md border border-border/40 rounded-3xl p-6 hover:-translate-y-1 hover:shadow-xl hover:border-primary/30 transition-all duration-300"
             >
-              <div className="flex items-start gap-4">
-                <div className="w-1.5 h-10 rounded-full bg-gradient-to-b from-primary to-primary/70 shrink-0" />
-                <div>
-                  <Link href={`/categories?category=${encodeURIComponent(mainCategory)}`}
-                    scroll={false}
-                  >
+              <div>
+                <Link href={`/categories?category=${encodeURIComponent(mainCategory)}`}
+                  scroll={false}
+                >
 
-                    <h3
-                      className={`text-xl sm:text-2xl font-bold hover:text-primary transition-colors ${selectedCategory === mainCategory ? 'text-primary' : 'text-foreground'
-                        }`}
-                      style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                      {mainCategory}
-                    </h3>
-                  </Link>
-                </div>
+                  <h3
+                    className={`text-xl sm:text-2xl font-bold hover:text-primary transition-colors ${selectedCategory === mainCategory ? 'text-primary' : 'text-foreground'
+                      }`}
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    {mainCategory}
+                  </h3>
+                </Link>
               </div>
 
               <div className="mt-4 mb-3 border-t border-border" />

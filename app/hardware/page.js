@@ -36,27 +36,19 @@ export default function HardwareHub({ searchParams }) {
             </section>
 
             {/* ──── Discover Categories ──── */}
-            <section className="py-16 border-b border-border bg-card/20">
+            <section className="py-12 border-b border-border bg-card/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-2xl font-bold mb-8" style={{ fontFamily: 'var(--font-heading)' }}>Browse by Component</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                        {hardwareCategories.map(cat => {
-                            const meta = CATEGORY_META[cat];
-                            if (!meta) return null;
-                            return (
-                                <Link
-                                    key={cat}
-                                    href={`/hardware/${encodeURIComponent(cat)}`}
-                                    className="p-5 bg-card border border-border/40 rounded-xl hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg transition-all flex items-start gap-4 h-full"
-                                >
-                                    <span className="text-3xl shrink-0 mt-1">{meta.icon}</span>
-                                    <div>
-                                        <span className="font-bold text-foreground block text-lg mb-1" style={{ fontFamily: 'var(--font-heading)' }}>{cat}</span>
-                                        <span className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">{meta.description}</span>
-                                    </div>
-                                </Link>
-                            );
-                        })}
+                    <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Browse by Component</h2>
+                    <div className="flex flex-wrap gap-3">
+                        {hardwareCategories.map(cat => (
+                            <Link
+                                key={cat}
+                                href={`/hardware/${encodeURIComponent(cat)}`}
+                                className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border/40 rounded-lg hover:text-primary hover:border-primary/30 transition-colors"
+                            >
+                                {cat}
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>

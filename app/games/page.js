@@ -36,33 +36,24 @@ export default function GamesHub({ searchParams }) {
             </section>
 
             {/* ──── Discover Genres (Structured Navigation) ──── */}
-            <section className="py-16 border-b border-border bg-card/20">
+            <section className="py-12 border-b border-border bg-card/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-2xl font-bold mb-8" style={{ fontFamily: 'var(--font-heading)' }}>Browse by Genre</h2>
-                    <div className="flex flex-wrap gap-4">
-                        {popularGenres.map(cat => {
-                            const meta = CATEGORY_META[cat];
-                            if (!meta) return null;
-                            return (
-                                <Link
-                                    key={cat}
-                                    href={`/games/${encodeURIComponent(cat)}`}
-                                    className="px-6 py-4 bg-card border border-border/40 rounded-xl hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg transition-all flex items-center gap-3 w-full sm:w-auto min-w-[200px]"
-                                >
-                                    <span className="text-2xl">{meta.icon}</span>
-                                    <div>
-                                        <span className="font-bold text-foreground block text-sm" style={{ fontFamily: 'var(--font-heading)' }}>{cat}</span>
-                                        <span className="text-xs text-muted-foreground line-clamp-1">{meta.description}</span>
-                                    </div>
-                                </Link>
-                            );
-                        })}
+                    <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Browse by Genre</h2>
+                    <div className="flex flex-wrap gap-3">
+                        {popularGenres.map(cat => (
+                            <Link
+                                key={cat}
+                                href={`/games/${encodeURIComponent(cat)}`}
+                                className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border/40 rounded-lg hover:text-primary hover:border-primary/30 transition-colors"
+                            >
+                                {cat}
+                            </Link>
+                        ))}
                         <Link
                             href="/categories"
-                            className="px-6 py-4 bg-accent/50 border border-border/40 rounded-xl hover:bg-primary hover:text-primary-foreground transition-all flex items-center justify-center font-bold text-sm sm:w-auto w-full min-w-[200px]"
-                            style={{ fontFamily: 'var(--font-heading)' }}
+                            className="px-4 py-2 text-sm font-medium text-primary hover:underline"
                         >
-                            View All Genres →
+                            View all genres →
                         </Link>
                     </div>
                 </div>

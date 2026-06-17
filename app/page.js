@@ -90,16 +90,15 @@ function SectionHeader({ title, subtitle, action }) {
   );
 }
 
-// ─── Discovery tag cloud items ───────────────────────────────────
-const DISCOVERY_TAGS = [
-  { label: '🎮 Relaxing Games', href: '/blog/relaxing-games-no-combat' },
-  { label: '💎 Hidden Indie Games', href: '/games/Hidden%20Gem' },
-  { label: '🔥 Addictive Games', href: '/games/Roguelike' },
-  { label: '⏱️ Short Games', href: '/blog/short-single-player-games-you-can-finish-in-one-weekend' },
-  { label: '👥 Multiplayer With Friends', href: '/games/Multiplayer' },
-  { label: '🧸 Cozy Games', href: '/games/Cozy%20Games' },
-  { label: '🆓 Free To Play', href: '/games/Free%20To%20Play' },
-  { label: '🏕️ Survival Games', href: '/games/Survival' },
+// ─── Featured game categories (given visual weight) ─────────────
+const FEATURED_CATEGORIES = [
+  { label: 'RPG', icon: '⚔️', description: 'Deep stories, vast worlds, character progression' },
+  { label: 'Cozy Games', icon: '🧸', description: 'Relax, unwind, no pressure' },
+  { label: 'Indie', icon: '💎', description: 'Handcrafted experiences from small studios' },
+];
+
+const REMAINING_GAME_CATEGORIES = [
+  'Hidden Gem', 'Multiplayer', 'Survival', 'Horror', 'Free To Play', 'Singleplayer', 'Roguelike',
 ];
 
 // ═════════════════════════════════════════════════════════════════
@@ -131,7 +130,7 @@ export default function BlogHome() {
 
       {/* ──── 2. TRENDING NOW ──── */}
       {featuredPosts.length > 0 && (
-        <section className="py-20 relative">
+        <section className="py-16 relative">
           <div className="absolute top-0 right-0 -z-10 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px]" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader title="Featured" subtitle="Hand-picked by our editors" />
@@ -146,51 +145,58 @@ export default function BlogHome() {
 
 
       {/* ──── 3. EXPLORE BY CATEGORY ──── */}
-      <section className="py-20 bg-accent/30 border-y border-border">
+      <section className="py-16 bg-accent/30 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title="Explore by Category" subtitle="Find your next favorite game or gear" action={{ label: 'Explore Games', href: '/games' }} />
 
-          {/* Games */}
-          <h3 className="text-lg font-bold text-foreground mb-4 uppercase tracking-wider" style={{ fontFamily: 'var(--font-heading)' }}>🎮 Games</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-10">
-            {gameCategories.map(cat => {
-              const meta = CATEGORY_META[cat] || {};
-              return (
-                <Link
-                  key={cat}
-                  href={`/games/${encodeURIComponent(cat)}`}
-                  className="group flex flex-col items-center text-center p-5 bg-card border border-border/40 rounded-2xl hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
-                >
-                  <span className="text-3xl mb-2">{meta.icon || '🎮'}</span>
-                  <span className="font-bold text-foreground group-hover:text-primary transition-colors text-sm" style={{ fontFamily: 'var(--font-heading)' }}>{cat}</span>
-                  <span className="text-xs text-muted-foreground mt-1 line-clamp-2">{meta.description || ''}</span>
-                </Link>
-              );
-            })}
+          {/* Featured Games — 3 large cards with descriptions */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {FEATURED_CATEGORIES.map(cat => (
+              <Link
+                key={cat.label}
+                href={`/games/${encodeURIComponent(cat.label)}`}
+                className="group relative overflow-hidden bg-card border border-border/40 rounded-2xl p-6 hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+              >
+                <span className="text-4xl mb-3 block">{cat.icon}</span>
+                <span className="font-bold text-foreground group-hover:text-primary transition-colors text-lg block mb-1" style={{ fontFamily: 'var(--font-heading)' }}>{cat.label}</span>
+                <span className="text-sm text-muted-foreground leading-relaxed">{cat.description}</span>
+              </Link>
+            ))}
           </div>
 
-          {/* Hardware */}
+          {/* Remaining games — compact inline links */}
+          <div className="flex flex-wrap gap-3 mb-10">
+            {REMAINING_GAME_CATEGORIES.map(cat => (
+              <Link
+                key={cat}
+                href={`/games/${encodeURIComponent(cat)}`}
+                className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border/40 rounded-lg hover:text-primary hover:border-primary/30 transition-colors"
+              >
+                {cat}
+              </Link>
+            ))}
+            <Link href="/games" className="px-4 py-2 text-sm font-medium text-primary hover:underline">
+              View all →
+            </Link>
+          </div>
+
+          {/* Hardware — compact grid */}
           <div className="flex justify-between items-end mb-4 mt-6">
             <h3 className="text-lg font-bold text-foreground uppercase tracking-wider" style={{ fontFamily: 'var(--font-heading)' }}>🛠️ Hardware & Gear</h3>
             <Link href="/hardware" className="text-primary font-semibold text-sm hover:underline whitespace-nowrap mb-1">
               Explore Hardware →
             </Link>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {hardwareCategories.map(cat => {
-              const meta = CATEGORY_META[cat] || {};
-              return (
-                <Link
-                  key={cat}
-                  href={`/hardware/${encodeURIComponent(cat)}`}
-                  className="group flex flex-col items-center text-center p-5 bg-card border border-border/40 rounded-2xl hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
-                >
-                  <span className="text-3xl mb-2">{meta.icon || '🔧'}</span>
-                  <span className="font-bold text-foreground group-hover:text-primary transition-colors text-sm" style={{ fontFamily: 'var(--font-heading)' }}>{cat}</span>
-                  <span className="text-xs text-muted-foreground mt-1 line-clamp-2">{meta.description || ''}</span>
-                </Link>
-              );
-            })}
+          <div className="flex flex-wrap gap-3">
+            {hardwareCategories.map(cat => (
+              <Link
+                key={cat}
+                href={`/hardware/${encodeURIComponent(cat)}`}
+                className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border/40 rounded-lg hover:text-primary hover:border-primary/30 transition-colors"
+              >
+                {cat}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -198,7 +204,7 @@ export default function BlogHome() {
 
       {/* ──── 4. GAME DISCOVERY GUIDES ──── */}
       {gameDiscoveryPosts.length > 0 && (
-        <section className="py-20 relative">
+        <section className="py-24 relative">
           <div className="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px]" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader title="Game Discovery Guides" subtitle="Popular curated game recommendations" action={{ label: 'View All Games', href: '/games' }} />
@@ -214,7 +220,7 @@ export default function BlogHome() {
 
       {/* ──── 5. HARDWARE & GEAR PICKS ──── */}
       {hardwarePosts.length > 0 && (
-        <section className="py-20 bg-accent/30 border-y border-border relative">
+        <section className="py-16 bg-accent/30 border-y border-border relative">
           <div className="absolute top-10 right-10 -z-10 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[80px]" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader title="Hardware & Gear Picks" subtitle="Top hardware guides and buying advice" action={{ label: 'All Hardware', href: '/hardware' }} />
@@ -230,7 +236,7 @@ export default function BlogHome() {
 
       {/* ──── 6. EDITOR'S PICKS / HIDDEN GEMS ──── */}
       {editorsPicks.length > 0 && (
-        <section className="py-20 relative">
+        <section className="py-16 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionHeader title="Editor's Picks" subtitle="Hidden gems handpicked from our archive" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -244,7 +250,7 @@ export default function BlogHome() {
 
 
       {/* ──── 7. LATEST ARTICLES ──── */}
-      <section className="py-20 bg-accent/30 rounded-t-[3rem] border-t border-border relative">
+      <section className="py-24 bg-accent/30 rounded-t-[3rem] border-t border-border relative">
         <div className="absolute top-20 left-0 -z-10 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader title="Latest Articles" subtitle="Fresh content from the gaming world" action={{ label: 'View All Articles', href: '/categories' }} />
@@ -265,25 +271,57 @@ export default function BlogHome() {
 
 
       {/* ──── 8. FIND YOUR NEXT GAME — Discovery Section ──── */}
-      <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-            Find Your Next Game
-          </h2>
-          <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
-            Not sure what to play? Explore curated collections based on mood, genre, and style.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {DISCOVERY_TAGS.map(tag => (
+      <section className="py-20 relative overflow-hidden">
+        {/* Ambient glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[700px] h-[400px] bg-primary/10 rounded-full blur-[120px]" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header — centered */}
+          <div className="text-center mb-10">
+            <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-primary mb-3">Game Discovery</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+              Find Your Next Game
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto">
+              Not sure what to play? Browse by mood, genre, or session length.
+            </p>
+          </div>
+
+          {/* Tag grid */}
+          <div className="bg-card border border-border/50 rounded-3xl p-8 shadow-lg">
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              {[
+                { label: 'Relaxing Games', href: '/blog/relaxing-games-no-combat' },
+                { label: 'Hidden Indie Gems', href: '/games/Hidden%20Gem' },
+                { label: 'Roguelikes', href: '/games/Roguelike' },
+                { label: 'Weekend Games', href: '/blog/short-single-player-games-you-can-finish-in-one-weekend' },
+                { label: 'Multiplayer', href: '/games/Multiplayer' },
+                { label: 'Cozy Games', href: '/games/Cozy%20Games' },
+                { label: 'Free To Play', href: '/games/Free%20To%20Play' },
+                { label: 'Survival', href: '/games/Survival' },
+              ].map(tag => (
+                <Link
+                  key={tag.label}
+                  href={tag.href}
+                  className="px-5 py-2.5 rounded-full font-semibold text-sm text-foreground bg-accent/60 border border-border hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                >
+                  {tag.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="text-center border-t border-border pt-6">
               <Link
-                key={tag.label}
-                href={tag.href}
-                className="px-6 py-3 bg-card border border-border/40 rounded-full font-semibold text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1 text-sm"
-                style={{ fontFamily: 'var(--font-heading)' }}
+                href="/games"
+                className="inline-flex items-center gap-2 py-3 px-8 bg-primary text-primary-foreground font-bold rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 transition-all duration-200"
               >
-                {tag.label}
+                Browse all games
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </Link>
-            ))}
+            </div>
           </div>
         </div>
       </section>
