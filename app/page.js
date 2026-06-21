@@ -6,6 +6,7 @@ import {
   getEditorsPicks,
   getPostsByPillar,
   getLatestPosts,
+  getCategoryCounts,
   HIERARCHICAL_CATEGORIES,
   CATEGORY_META,
 } from '@/lib/posts';
@@ -91,14 +92,24 @@ function SectionHeader({ title, subtitle, action }) {
 }
 
 // ─── Featured game categories (given visual weight) ─────────────
-const FEATURED_CATEGORIES = [
-  { label: 'RPG', icon: '⚔️', description: 'Deep stories, vast worlds, character progression' },
-  { label: 'Cozy Games', icon: '🧸', description: 'Relax, unwind, no pressure' },
-  { label: 'Indie', icon: '💎', description: 'Handcrafted experiences from small studios' },
+const GAMES_CATEGORIES = [
+  { label: 'RPG', key: 'RPG' },
+  { label: 'Indie', key: 'Indie' },
+  { label: 'Multiplayer', key: 'Multiplayer' },
+  { label: 'Survival', key: 'Survival' },
+  { label: 'Horror', key: 'Horror' },
+  { label: 'Cozy Games', key: 'Cozy Games' },
+  { label: 'Roguelike', key: 'Roguelike' },
+  { label: 'Free To Play', key: 'Free To Play' },
 ];
 
-const REMAINING_GAME_CATEGORIES = [
-  'Hidden Gem', 'Multiplayer', 'Survival', 'Horror', 'Free To Play', 'Singleplayer', 'Roguelike',
+const HARDWARE_CATEGORIES = [
+  { label: 'Gaming Laptops', key: 'Laptops' },
+  { label: 'Monitors', key: 'Monitors' },
+  { label: 'Keyboards', key: 'Keyboards' },
+  { label: 'Headsets', key: 'Headsets' },
+  { label: 'Controllers', key: 'Controllers' },
+  { label: 'Budget Gear', key: 'Budget' },
 ];
 
 // ═════════════════════════════════════════════════════════════════
@@ -117,9 +128,7 @@ export default function BlogHome() {
   ].map(p => p.slug);
   const latestPosts = getLatestPosts(6, shownSlugs);
 
-  // Game categories for the Explore grid
-  const gameCategories = ['Hidden Gem', 'Cozy Games', 'Indie', 'Multiplayer', 'Survival', 'RPG', 'Horror', 'Free To Play', 'Singleplayer', 'Roguelike'];
-  const hardwareCategories = ['Laptops', 'PC', 'Keyboards', 'Headsets', 'Mouse', 'Monitors', 'Controllers', 'Budget'];
+  const counts = getCategoryCounts();
 
   return (
     <div className="bg-background text-primary pt-24 overflow-x-hidden">
@@ -147,56 +156,70 @@ export default function BlogHome() {
       {/* ──── 3. EXPLORE BY CATEGORY ──── */}
       <section className="py-16 bg-accent/30 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title="Explore by Category" subtitle="Find your next favorite game or gear" action={{ label: 'Explore Games', href: '/games' }} />
+          <SectionHeader title="Explore by Category" subtitle="Browse games, hardware, and guides by topic" />
 
-          {/* Featured Games — 3 large cards with descriptions */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {FEATURED_CATEGORIES.map(cat => (
-              <Link
-                key={cat.label}
-                href={`/games/${encodeURIComponent(cat.label)}`}
-                className="group relative overflow-hidden bg-card border border-border/40 rounded-2xl p-6 hover:border-primary/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
-              >
-                <span className="text-4xl mb-3 block">{cat.icon}</span>
-                <span className="font-bold text-foreground group-hover:text-primary transition-colors text-lg block mb-1" style={{ fontFamily: 'var(--font-heading)' }}>{cat.label}</span>
-                <span className="text-sm text-muted-foreground leading-relaxed">{cat.description}</span>
+          {/* Games Subsection */}
+          <div className="mb-16">
+            <div className="flex justify-between items-end mb-6 pb-2 border-b border-border/40">
+              <h3 className="text-lg font-bold text-foreground uppercase tracking-wider" style={{ fontFamily: 'var(--font-heading)' }}>
+                Games
+              </h3>
+              <Link href="/games" className="text-primary font-semibold text-sm hover:underline whitespace-nowrap mb-1">
+                View all game categories →
               </Link>
-            ))}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {GAMES_CATEGORIES.map(cat => {
+                const count = counts[cat.key] || 0;
+                return (
+                  <Link
+                    key={cat.key}
+                    href={`/games/${encodeURIComponent(cat.key)}`}
+                    className="flex justify-between items-center py-2.5 px-4 bg-card/50 hover:bg-card border border-border/30 hover:border-primary/40 rounded-xl transition-all duration-200 group text-foreground"
+                  >
+                    <span className="font-semibold text-foreground/90 group-hover:text-primary transition-colors text-sm sm:text-base">
+                      {cat.label}
+                    </span>
+                    <span className="text-muted-foreground/60 text-xs font-mono group-hover:text-foreground/80 transition-colors">
+                      ({count})
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Remaining games — compact inline links */}
-          <div className="flex flex-wrap gap-3 mb-10">
-            {REMAINING_GAME_CATEGORIES.map(cat => (
-              <Link
-                key={cat}
-                href={`/games/${encodeURIComponent(cat)}`}
-                className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border/40 rounded-lg hover:text-primary hover:border-primary/30 transition-colors"
-              >
-                {cat}
+          {/* Hardware Subsection */}
+          <div>
+            <div className="flex justify-between items-end mb-6 pb-2 border-b border-border/40">
+              <h3 className="text-lg font-bold text-foreground uppercase tracking-wider" style={{ fontFamily: 'var(--font-heading)' }}>
+                Hardware
+              </h3>
+              <Link href="/hardware" className="text-primary font-semibold text-sm hover:underline whitespace-nowrap mb-1">
+                View all hardware →
               </Link>
-            ))}
-            <Link href="/games" className="px-4 py-2 text-sm font-medium text-primary hover:underline">
-              View all →
-            </Link>
-          </div>
+            </div>
 
-          {/* Hardware — compact grid */}
-          <div className="flex justify-between items-end mb-4 mt-6">
-            <h3 className="text-lg font-bold text-foreground uppercase tracking-wider" style={{ fontFamily: 'var(--font-heading)' }}>🛠️ Hardware & Gear</h3>
-            <Link href="/hardware" className="text-primary font-semibold text-sm hover:underline whitespace-nowrap mb-1">
-              Explore Hardware →
-            </Link>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {hardwareCategories.map(cat => (
-              <Link
-                key={cat}
-                href={`/hardware/${encodeURIComponent(cat)}`}
-                className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border/40 rounded-lg hover:text-primary hover:border-primary/30 transition-colors"
-              >
-                {cat}
-              </Link>
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {HARDWARE_CATEGORIES.map(cat => {
+                const count = counts[cat.key] || 0;
+                return (
+                  <Link
+                    key={cat.key}
+                    href={`/hardware/${encodeURIComponent(cat.key)}`}
+                    className="flex justify-between items-center py-2.5 px-4 bg-card/50 hover:bg-card border border-border/30 hover:border-primary/40 rounded-xl transition-all duration-200 group text-foreground"
+                  >
+                    <span className="font-semibold text-foreground/90 group-hover:text-primary transition-colors text-sm sm:text-base">
+                      {cat.label}
+                    </span>
+                    <span className="text-muted-foreground/60 text-xs font-mono group-hover:text-foreground/80 transition-colors">
+                      ({count})
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
