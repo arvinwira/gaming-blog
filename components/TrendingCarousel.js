@@ -62,9 +62,9 @@ export default function TrendingCarousel({ slides }) {
                         </span>
                       )}
                     </div>
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-4 group-hover:text-primary transition-colors duration-300" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-4 group-hover:text-primary transition-colors duration-300" style={{ fontFamily: 'var(--font-heading)' }}>
                       {post.title}
-                    </h1>
+                    </h2>
                     {post.excerpt && (
                       <p className="text-white/80 font-medium text-base md:text-lg max-w-2xl line-clamp-2 md:line-clamp-3 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 hidden sm:block">
                         {post.excerpt}

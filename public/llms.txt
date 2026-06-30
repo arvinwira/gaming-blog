@@ -1,0 +1,16 @@
+# Chronic Reload
+
+> Your ultimate source for gaming news, hardware reviews, and curated game discovery.
+
+## About
+Chronic Reload is a dedicated gaming blog focusing on high-quality, honest hardware reviews, curated game lists (including cozy games, indie gems, roguelikes, and survival games), and breaking industry news.
+
+## Content Pillars
+- [Games](https://chronicreload.com/games) - Curated game recommendations, reviews, and lists.
+- [Hardware & Gear](https://chronicreload.com/hardware) - Mechanical keyboards, monitors, gaming laptops, and headsets reviews.
+- [News](https://chronicreload.com/news) - Industry news and upcoming release dates.
+
+## Key Pages
+- [About Us](https://chronicreload.com/about) - Learn more about our team and editorial mission.
+- [Contact](https://chronicreload.com/contact) - Get in touch with us for tips or queries.
+- [Privacy Policy](https://chronicreload.com/privacy-policy) - Our data and privacy practices.

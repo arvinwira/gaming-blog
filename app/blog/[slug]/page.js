@@ -9,6 +9,7 @@ import ReadingProgressBar from '@/components/ReadingProgressBar';
 import TableOfContents from '@/components/TableOfContents';
 import readingTime from 'reading-time';
 import Script from 'next/script';
+import ShareButtons from '@/components/ShareButtons';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -22,9 +23,34 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const { frontmatter } = await getPostData(slug);
+  const imageUrl = frontmatter.coverImage.startsWith('http')
+    ? frontmatter.coverImage
+    : `https://chronicreload.com${frontmatter.coverImage}`;
+
   return {
     title: frontmatter.title,
     description: frontmatter.excerpt,
+    openGraph: {
+      type: "article",
+      title: frontmatter.title,
+      description: frontmatter.excerpt,
+      url: `https://chronicreload.com/blog/${slug}`,
+      siteName: "Chronic Reload",
+      images: [
+        {
+          url: imageUrl,
+          alt: frontmatter.title,
+        }
+      ],
+      publishedTime: frontmatter.date,
+      authors: [frontmatter.author],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontmatter.title,
+      description: frontmatter.excerpt,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -40,8 +66,37 @@ export default async function Post({ params }) {
   const { content } = matter(fileContents);
   const stats = readingTime(content);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://chronicreload.com/blog/${slug}`
+    },
+    "headline": frontmatter.title,
+    "description": frontmatter.excerpt,
+    "image": frontmatter.coverImage.startsWith('http') ? frontmatter.coverImage : `https://chronicreload.com${frontmatter.coverImage}`,
+    "datePublished": frontmatter.date,
+    "author": {
+      "@type": "Person",
+      "name": frontmatter.author || "Chronic Reload Writer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Chronic Reload",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://chronicreload.com/logo.png"
+      }
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ReadingProgressBar />
       <article className="bg-background text-foreground pb-12 pt-24">
         {/* Full Width Hero Section */}
@@ -116,6 +171,7 @@ export default async function Post({ params }) {
             <div className="prose dark:prose-invert prose-lg max-w-none prose-headings:font-heading prose-a:text-primary hover:prose-a:text-secondary">
               <MDXContent code={code} />
             </div>
+            <ShareButtons title={frontmatter.title} url={`https://chronicreload.com/blog/${slug}`} />
           </div>
 
           {/* Table of Contents Sidebar */}

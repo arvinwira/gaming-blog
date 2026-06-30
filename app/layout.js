@@ -27,21 +27,28 @@ const jetbrainsMono = JetBrains_Mono({
 
 
 export const metadata = {
-  title: "Chronic Reload",
+  metadataBase: new URL('https://chronicreload.com'),
+  title: {
+    default: "Chronic Reload | Your Gaming News Hub",
+    template: "%s | Chronic Reload"
+  },
   description: "Your source for gaming news & media",
+  alternates: {
+    canonical: './',
+  },
   openGraph: {
     type: "website",
     title: "Chronic Reload | Your Gaming News Hub",
     description: "Stay up to date with the latest gaming news, reviews, and upcoming releases. Chronic Reload brings you curated content and fresh updates.",
     url: "https://chronicreload.com",
     siteName: "Chronic Reload",
-    images: ["https://chronicreload.com/logo.png"],
+    images: ["/logo.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Chronic Reload | Your Gaming News Hub",
     description: "Get the latest on gaming news, reviews, and new releases with Chronic Reload.",
-    images: ["https://chronicreload.com/logo.png"],
+    images: ["/logo.png"],
   },
   icons: {
     icon: '/favicon.ico',
@@ -57,6 +64,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM / AI Discoverability" />
+      </head>
       <body className={`${spaceGrotesk.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased text-foreground bg-background`}>
         <ThemeProvider>
           <div className="flex flex-col min-h-screen">

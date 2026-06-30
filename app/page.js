@@ -130,8 +130,58 @@ export default function BlogHome() {
 
   const counts = getCategoryCounts();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://chronicreload.com/#website",
+        "url": "https://chronicreload.com",
+        "name": "Chronic Reload",
+        "description": "Your source for gaming news & media",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://chronicreload.com/categories?query={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://chronicreload.com/#organization",
+        "name": "Chronic Reload",
+        "url": "https://chronicreload.com",
+        "logo": "https://chronicreload.com/logo.png",
+        "sameAs": [
+          "https://x.com/chronic_reload",
+          "https://www.tiktok.com/@chronicreload"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "editorial support",
+          "email": "chronicreloadblog@gmail.com"
+        }
+      }
+    ]
+  };
+
   return (
     <div className="bg-background text-primary pt-24 overflow-x-hidden">
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      {/* ──── HERO BRANDING SECTION (H1) ──── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-2 text-center relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[100px]" />
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary/80" style={{ fontFamily: 'var(--font-heading)' }}>
+          Chronic Reload
+        </h1>
+        <p className="text-muted-foreground mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-medium">
+          Your source for hard-hitting gaming reviews, hardware buying guides, and breaking industry news.
+        </p>
+      </section>
 
       {/* ──── 1. HERO — Trending Carousel ──── */}
       <TrendingCarousel slides={trendingPosts} />
@@ -349,7 +399,59 @@ export default function BlogHome() {
         </div>
       </section>
 
+      {/* ──── 9. EDITORIAL MISSION / ABOUT SECTION (AI/GEO & EEAT Optimization) ──── */}
+      <section className="py-20 bg-accent/20 border-t border-border relative">
+        <div className="absolute bottom-10 right-10 -z-10 w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[80px]" />
+        
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            
+            {/* Narrative Prose */}
+            <div className="md:col-span-7 space-y-6">
+              <h2 className="text-3xl font-extrabold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                About Chronic Reload
+              </h2>
+              <h3 className="text-lg font-bold text-primary uppercase tracking-wider" style={{ fontFamily: 'var(--font-heading)' }}>
+                Our Editorial Philosophy & Mission
+              </h3>
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                Chronic Reload is a dedicated, independent gaming publication established by lifelong enthusiasts. Our mission is simple: to slice through the noise of modern gaming media and deliver objective, thorough hardware evaluations, honest game reviews, and curated discovery lists that respect your time and value your passion. We do not accept sponsored content for positive reviews; our loyalty lies entirely with the gaming community.
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Whether you are looking for the absolute best budget hardware to build your next PC, seeking out underrated indie masterpieces that fell under the radar, or staying on top of major industry trends, we have you covered with data-driven research and experience-based guides.
+              </p>
+            </div>
 
+            {/* Structured Value Points */}
+            <div className="md:col-span-5 bg-card border border-border/50 rounded-3xl p-6 sm:p-8 shadow-md">
+              <h4 className="text-lg font-bold text-foreground mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                What We Offer Readers
+              </h4>
+              <ul className="space-y-4 text-sm text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="text-primary text-lg">✦</span>
+                  <div>
+                    <strong className="text-foreground">Unbiased Hardware Reviews:</strong> We purchase and test gaming keyboards, headsets, mouse models, monitors, and laptops to give you genuine suggestions.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary text-lg">✦</span>
+                  <div>
+                    <strong className="text-foreground">Curated Discovery Guides:</strong> Helping you find your next gaming obsession, from cozy farming simulators to intense cooperative survival adventures.
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary text-lg">✦</span>
+                  <div>
+                    <strong className="text-foreground">Breaking Gaming News:</strong> Clear, summarized updates on upcoming releases, patch notes, sales, and platform announcements.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
     </div>
   );

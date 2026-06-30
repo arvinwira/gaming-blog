@@ -32,11 +32,14 @@ export default function PrivacyPolicyPage() {
             <li>To comply with legal obligations and enforce our terms</li>
           </ul>
 
-          <h2>3. Google AdSense and Third Party Tools</h2>
+          <h2>3. Google AdSense, Affiliate Disclosures, and Third Party Tools</h2>
           <p>
             We use third-party vendors, including Google, to serve ads. These parties may use cookies to serve ads
-            based on a users prior visits to our website or other websites. Google use of advertising cookies enables
+            based on a user&apos;s prior visits to our website or other websites. Google&apos;s use of advertising cookies enables
             it and its partners to serve more relevant ads.
+          </p>
+          <p>
+            <strong>Affiliate Links &amp; Cookies:</strong> Chronic Reload participates in the Amazon Services LLC Associates Program. When you click on product links on this website (such as links directing to Amazon.com) and make a purchase, we may earn a small referral commission. This process uses tracking cookies placed by third-party affiliate networks (including Amazon) to register and attribute qualifying purchases. These cookies carry no personally identifiable information and do not affect the price you pay.
           </p>
           <p>
             We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and interact with our website through behavioral metrics, heatmaps, and session replay to improve and market our products/services. Website usage data is captured using first and third-party cookies and other tracking technologies to determine the popularity of products/services and online activity. Additionally, we use this information for site optimization, fraud/security purposes, and advertising. For more information about how Microsoft collects and uses your data, visit the{' '}

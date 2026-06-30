@@ -34,12 +34,15 @@ export default function TermsPage() {
             <li>Respect other users and refrain from submitting abusive or inappropriate content</li>
           </ul>
 
-          <h2>3. Third-Party Ads &amp; Links</h2>
+          <h2>3. Affiliate Disclosure &amp; Third-Party Links</h2>
           <p>
-            This website may contain advertisements and links to external sites. We do not endorse, control, or take responsibility for any third-party content, services, or offers.
+            This website may contain advertisements, product reviews, and links to external sites. We do not endorse, control, or take responsibility for any third-party content, services, or offers.
           </p>
           <p>
-            All ad-related tracking and data collection are subject to the policies of the respective ad providers, including Google AdSense. See our{' '}
+            <strong>Amazon Associates Disclosure:</strong> Chronic Reload is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. As an Amazon Associate, we earn from qualifying purchases at no additional cost to you.
+          </p>
+          <p>
+            All ad-related and affiliate tracking data collection are subject to the policies of the respective providers, including Google AdSense and Amazon. See our{' '}
             <Link href="/privacy-policy" className="text-secondary hover:underline">
               Privacy Policy
             </Link>{' '}
