@@ -7,10 +7,11 @@ export const metadata = {
   description: 'Explore all gaming and hardware categories. Find your next favorite game or gear on Chronic Reload.',
 };
 
-export default function CategoriesPage({ searchParams }) {
-  const query = searchParams?.q || '';
-  const currentPage = Number(searchParams?.page) || 1;
-  const category = searchParams?.category || null;
+export default async function CategoriesPage({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+  const query = resolvedSearchParams?.q || '';
+  const currentPage = Number(resolvedSearchParams?.page) || 1;
+  const category = resolvedSearchParams?.category || null;
 
   const { posts, totalPages } = getPosts({ query, currentPage, category });
 

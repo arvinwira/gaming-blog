@@ -9,8 +9,9 @@ export const metadata = {
     description: 'Upgrade your setup. Read our expert reviews and buying guides on the best gaming keyboards, mice, headsets, monitors, and PC components.',
 };
 
-export default function HardwareHub({ searchParams }) {
-    const currentPage = Number(searchParams?.page) || 1;
+export default async function HardwareHub({ searchParams }) {
+    const resolvedSearchParams = await searchParams;
+    const currentPage = Number(resolvedSearchParams?.page) || 1;
     const { posts, subcategories, totalPages, totalPosts } = getPostsForHub('hardware', currentPage);
 
     // Group subcategories logically for better UX

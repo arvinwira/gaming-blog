@@ -9,8 +9,9 @@ export const metadata = {
     description: 'Stay up to date with the latest gaming industry news, upcoming game release dates, developer interviews, and patch notes.',
 };
 
-export default function NewsHub({ searchParams }) {
-    const currentPage = Number(searchParams?.page) || 1;
+export default async function NewsHub({ searchParams }) {
+    const resolvedSearchParams = await searchParams;
+    const currentPage = Number(resolvedSearchParams?.page) || 1;
     const { posts, subcategories, totalPages, totalPosts } = getPostsForHub('news', currentPage);
 
     const newsCategories = ['News', 'Upcoming'];

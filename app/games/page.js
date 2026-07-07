@@ -9,8 +9,9 @@ export const metadata = {
     description: 'The ultimate database for finding your next favorite game. Browse top lists, new releases, cozy games, hidden indie gems, and comprehensive gaming reviews.',
 };
 
-export default function GamesHub({ searchParams }) {
-    const currentPage = Number(searchParams?.page) || 1;
+export default async function GamesHub({ searchParams }) {
+    const resolvedSearchParams = await searchParams;
+    const currentPage = Number(resolvedSearchParams?.page) || 1;
     const { posts, subcategories, totalPages, totalPosts } = getPostsForHub('games', currentPage);
 
     // Group subcategories logically for better UX

@@ -19,8 +19,9 @@ export function generateStaticParams() {
     return params;
 }
 
-export function generateMetadata({ params }) {
-    const cat = decodeURIComponent(params.category);
+export async function generateMetadata({ params }) {
+    const resolvedParams = await params;
+    const cat = decodeURIComponent(resolvedParams.category);
     const meta = CATEGORY_META[cat];
     return {
         title: `${cat} ${meta?.parent ? meta.parent.charAt(0).toUpperCase() + meta.parent.slice(1) : ''} – Reviews & Guides | Chronic Reload`,
@@ -35,15 +36,17 @@ function getRelatedCategories(currentCat, hub) {
     );
 }
 
-export default function SubcategoryHub({ params, searchParams }) {
-    const hub = params.hub.toLowerCase();
+export default async function SubcategoryHub({ params, searchParams }) {
+    const resolvedParams = await params;
+    const resolvedSearchParams = await searchParams;
+    const hub = resolvedParams.hub.toLowerCase();
 
     if (!VALID_HUBS.includes(hub)) {
         notFound();
     }
 
-    const categoryKey = decodeURIComponent(params.category);
-    const currentPage = Number(searchParams?.page) || 1;
+    const categoryKey = decodeURIComponent(resolvedParams.category);
+    const currentPage = Number(resolvedSearchParams?.page) || 1;
     const meta = CATEGORY_META[categoryKey];
 
     // If category doesn't exist in our meta or doesn't belong to this hub, 404
