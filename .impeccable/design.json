@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-21T00:00:00.000Z",
+  "title": "Design System: Chronic Reload",
+  "extensions": {
+    "colorMeta": {
+      "vivid-cerulean": { "role": "primary", "displayName": "Vivid Cerulean", "canonical": "rgb(30 152 192)", "tonalRamp": ["#0a3442", "#13627c", "#1c8cb0", "#2bb2de", "#60c5e6", "#95d8ee", "#caecf7", "#e9f7fc"] },
+      "sky-blue": { "role": "secondary", "displayName": "Sky Blue", "canonical": "rgb(107 195 214)", "tonalRamp": ["#11343c", "#1f6170", "#2c8ba0", "#3fb1ca", "#6fc5d7", "#9fd8e4", "#cfecf2", "#ebf7f9"] },
+      "warm-linen": { "role": "neutral", "displayName": "Warm Linen", "canonical": "rgb(209 204 188)", "tonalRamp": ["#2d2a1f", "#554e3a", "#797053", "#9b916e", "#b4ac92", "#cdc8b6", "#e6e3db", "#f5f3f0"] },
+      "dark-teal": { "role": "neutral", "displayName": "Dark Teal", "canonical": "rgb(28 58 72)", "tonalRamp": ["#152c37", "#285367", "#397693", "#4f98ba", "#7bb2cc", "#a7ccdd", "#d3e5ee", "#edf4f8"] },
+      "warm-off-white": { "role": "neutral", "displayName": "Warm Off-White", "canonical": "rgb(248 246 240)", "tonalRamp": ["#342d18", "#61542d", "#8b7941", "#b19b58", "#c5b482", "#d8cdac", "#ece6d5", "#f7f5ee"] },
+      "muted-sage": { "role": "neutral", "displayName": "Muted Sage", "canonical": "rgb(122 140 133)", "tonalRamp": ["#232927", "#424d49", "#5f6d68", "#7c8d87", "#9daaa5", "#bdc6c3", "#dee3e1", "#f1f3f2"] },
+      "linen-border": { "role": "neutral", "displayName": "Linen Border", "canonical": "rgb(218 213 199)", "tonalRamp": ["#2e2a1e", "#564e39", "#7b7051", "#9e906c", "#b6ac90", "#cec8b5", "#e7e3da", "#f5f3f0"] },
+      "teal-green-success": { "role": "success", "displayName": "Teal-Green Success", "canonical": "rgb(14 160 95)", "tonalRamp": ["#06462a", "#0b834e", "#10bc6f", "#1eeb90", "#56f0ac", "#8ef5c7", "#c7fae3", "#e8fdf3"] },
+      "amber-warning": { "role": "warning", "displayName": "Amber Warning", "canonical": "rgb(195 128 10)", "tonalRamp": ["#493004", "#885907", "#c27f0a", "#f3a316", "#f6ba50", "#f9d18b", "#fce8c5", "#fef5e7"] },
+      "vivid-crimson-error": { "role": "error", "displayName": "Vivid Crimson Error", "canonical": "rgb(210 40 55)", "tonalRamp": ["#400c11", "#78171f", "#ab212d", "#d83140", "#e26570", "#eb98a0", "#f5cccf", "#fbeaeb"] },
+      "affiliate-orange": { "role": "tertiary", "displayName": "Affiliate Orange", "canonical": "#FF9900", "tonalRamp": ["#4d2e00", "#8f5500", "#cc7a00", "#ff9900", "#ffb84d", "#ffd18a", "#ffe6bf", "#fff5e0"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 on home and about pages only." },
+      "headline": { "displayName": "Headline", "purpose": "Section headers and page titles (SectionHeader component)." },
+      "body": { "displayName": "Body", "purpose": "Default UI copy, nav labels, excerpts." },
+      "label": { "displayName": "Label", "purpose": "Uppercase category eyebrows and tags." },
+      "article": { "displayName": "Article Body", "purpose": "Long-form post content inside .prose only; switches to serif." },
+      "mono": { "displayName": "Mono", "purpose": "Sparse numeric/technical details, e.g. category post counts." }
+    },
+    "shadows": [
+      { "name": "resting-card", "value": "0 2px 8px rgba(0,0,0,0.04)", "purpose": "Default flat elevation for cards and tables at rest." },
+      { "name": "hover-glow-primary", "value": "0 25px 50px -12px rgba(30,152,192,0.2)", "purpose": "Brand-tinted glow shadow on card/button hover, paired with a small upward lift." }
+    ],
+    "motion": [
+      { "name": "fade-in-up", "value": "fadeInUp 0.6s ease-out forwards", "purpose": "Entrance animation for dropdown panels and mobile menu." },
+      { "name": "hover-lift", "value": "transform 0.2-0.3s ease (translateY(-2px) to -8px)", "purpose": "Default hover lift on interactive cards and buttons, always paired with a shadow color change." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call-to-action pill button.",
+      "html": "<button class=\"ds-btn-primary\">Browse all games</button>",
+      "css": ".ds-btn-primary { background: rgb(30,152,192); color: #fff; padding: 12px 32px; border-radius: 9999px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; border: none; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(30,152,192,0.3); } .ds-btn-primary:focus-visible { outline: 2px solid rgb(30,152,192); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline/ghost pill button, e.g. 'View All Articles'.",
+      "html": "<button class=\"ds-btn-secondary\">View All Articles</button>",
+      "css": ".ds-btn-secondary { background: rgb(255,254,250); color: rgb(28,58,72); padding: 16px 32px; border-radius: 9999px; border: 1px solid rgb(218,213,199); font-weight: 700; font-family: 'Space Grotesk', sans-serif; cursor: pointer; transition: all 0.3s ease; } .ds-btn-secondary:hover { background: rgb(30,152,192); color: #fff; border-color: rgb(30,152,192); transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(30,152,192,0.3); }"
+    },
+    {
+      "name": "Article Card",
+      "kind": "card",
+      "refersTo": "card-article",
+      "description": "Vertical post card used across homepage sections.",
+      "html": "<a class=\"ds-card-article\" href=\"#\"><div class=\"ds-card-thumb\"></div><div class=\"ds-card-body\"><span class=\"ds-card-eyebrow\">RPG</span><h3 class=\"ds-card-title\">10 Hidden Gems of 2025</h3><p class=\"ds-card-excerpt\">Underrated games that flew under the radar this year.</p></div></a>",
+      "css": ".ds-card-article { display: block; background: rgb(255,254,250); border: 1px solid rgba(218,213,199,0.4); border-radius: 1.5rem; overflow: hidden; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all 0.3s ease; } .ds-card-article:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(30,152,192,0.2); border-color: rgba(30,152,192,0.5); } .ds-card-thumb { height: 14rem; background: linear-gradient(135deg, rgb(107,195,214), rgb(30,152,192)); } .ds-card-body { padding: 24px; } .ds-card-eyebrow { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(107,195,214); margin-bottom: 12px; } .ds-card-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.25rem; color: rgb(28,58,72); margin-bottom: 12px; } .ds-card-excerpt { font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; color: rgb(122,140,133); }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": null,
+      "description": "Pill-shaped search field with inline submit button, from the Categories page.",
+      "html": "<form class=\"ds-search\"><svg class=\"ds-search-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z\"/></svg><input class=\"ds-search-input\" placeholder=\"Search for an article...\" /><button class=\"ds-search-btn\">Search</button></form>",
+      "css": ".ds-search { position: relative; display: flex; align-items: center; } .ds-search-icon { position: absolute; left: 16px; width: 20px; height: 20px; color: rgb(122,140,133); pointer-events: none; } .ds-search-input { width: 100%; padding: 16px 16px 16px 48px; border-radius: 9999px; border: 1px solid rgb(218,213,199); background: rgb(255,254,250); box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-family: 'Space Grotesk', sans-serif; color: rgb(28,58,72); } .ds-search-input:focus { outline: none; border-color: rgb(30,152,192); box-shadow: 0 0 0 2px rgba(30,152,192,0.4); } .ds-search-btn { position: absolute; right: 6px; padding: 10px 24px; border-radius: 9999px; background: rgb(30,152,192); color: #fff; font-weight: 700; border: none; cursor: pointer; }"
+    },
+    {
+      "name": "Nav Dropdown",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Desktop hover dropdown panel used in the header.",
+      "html": "<div class=\"ds-dropdown\"><button class=\"ds-dropdown-trigger\">Games</button><div class=\"ds-dropdown-panel\"><a class=\"ds-dropdown-item\">RPG</a><a class=\"ds-dropdown-item\">Roguelike</a><a class=\"ds-dropdown-item\">Cozy Games</a></div></div>",
+      "css": ".ds-dropdown { position: relative; font-family: 'Outfit', sans-serif; } .ds-dropdown-trigger { background: none; border: none; color: rgb(28,58,72); font-size: 0.875rem; font-weight: 500; padding: 8px 12px; border-radius: 0.375rem; cursor: pointer; } .ds-dropdown-trigger:hover { color: rgb(30,152,192); } .ds-dropdown-panel { position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 220px; background: rgb(255,254,250); border: 1px solid rgb(218,213,199); border-radius: 0.75rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); padding: 8px 0; } .ds-dropdown-item { display: block; padding: 10px 16px; font-size: 0.875rem; color: rgb(28,58,72); text-decoration: none; } .ds-dropdown-item:hover { color: rgb(30,152,192); background: rgba(209,204,188,0.5); }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Circular animated light/dark mode switcher, the site's signature control.",
+      "html": "<button class=\"ds-theme-toggle\" aria-label=\"Toggle dark mode\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41\"/></svg></button>",
+      "css": ".ds-theme-toggle { width: 40px; height: 40px; padding: 8px; background: rgb(30,152,192); color: #fff; border-radius: 9999px; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.2s ease; } .ds-theme-toggle:hover { transform: scale(1.05); } .ds-theme-toggle svg { width: 100%; height: 100%; }"
+    },
+    {
+      "name": "Callout Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Signature glass callout with a semantic top-accent border (Key Highlights / Pros & Cons).",
+      "html": "<div class=\"ds-callout\"><h4 class=\"ds-callout-title\">Key Highlights</h4><ul class=\"ds-callout-list\"><li>Excellent battery life for the price</li><li>1440p 165Hz panel is a standout</li></ul></div>",
+      "css": ".ds-callout { background: rgb(255,254,250); border-radius: 1rem; border-top: 4px solid rgb(30,152,192); padding: 8px 24px 24px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); } .ds-callout-title { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.25rem; color: rgb(30,152,192); margin-bottom: 12px; } .ds-callout-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; font-family: 'Space Grotesk', sans-serif; color: rgb(28,58,72); }"
+    },
+    {
+      "name": "Affiliate Button",
+      "kind": "button",
+      "refersTo": "button-affiliate",
+      "description": "Outbound purchase-link CTA, visually distinct from every other button so revenue-driving links stand apart from navigation.",
+      "html": "<a class=\"ds-btn-affiliate\" href=\"#\">Check price on Amazon</a>",
+      "css": ".ds-btn-affiliate { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.35); color: #FF9900; font-weight: 600; border-radius: 0.75rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.2s ease-in-out; } .ds-btn-affiliate:hover { background: rgba(255,153,0,0.25); border-color: rgba(255,153,0,0.6); box-shadow: 0 4px 14px rgba(255,153,0,0.2); transform: translateY(-2px); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Reload Console",
+    "overview": "Chronic Reload reads like a calm instrument panel that hands a reader back control amid the noise of daily gaming news — warm, paper-toned surfaces instead of clinical white, a single confident cerulean accent doing all the pointing, and every interactive surface built as a soft, fully-rounded control rather than a sharp technical edge. The palette is deliberately not neutral-gray: even the \"neutral\" background and borders carry a warm linen tint, and the deep teal used for body text reads as ink rather than default black. In dark mode the same five source colors invert onto near-black surfaces without ever going cold or desaturated — cerulean and sky blue both brighten to stay vivid against the dark.\n\nThe system is friendly and approachable by intent: heavy corner rounding, pill-shaped buttons and search fields, and generous padding all soften what is functionally a dense content-and-ad-supported blog into something that feels welcoming rather than transactional.",
+    "keyCharacteristics": [
+      "Warm, linen-tinted neutrals instead of pure white/gray/black at every layer (background, card, border).",
+      "One confident brand color (vivid cerulean) carries nearly all calls-to-action, links, and active states; sky blue is reserved for secondary/supporting accents.",
+      "Corners are never sharp: the rounding scale runs from 6px (menu items) up to fully pill-shaped (buttons, tags, search).",
+      "Long-form article body copy switches to a serif (Georgia) while all UI chrome — nav, headings, cards, buttons — stays on the Space Grotesk / Outfit pairing."
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Vivid cerulean is the only color that means \"act here.\" Sky blue, warm linen, and sage are supporting/neutral roles and should never carry a primary call-to-action.", "section": "colors" },
+      { "name": "The Editorial Serif Rule", "body": "Every UI surface (nav, cards, buttons, headings) uses the Outfit/Space Grotesk pairing. The moment content becomes an actual article body (.prose), typography switches to Georgia serif. Never mix the two within the same content class.", "section": "typography" }
+    ],
+    "dos": [
+      "Do keep vivid cerulean as the only color that signals a primary action; every other color (sky blue, linen, sage) stays supporting/neutral.",
+      "Do use full rounded-full pill shapes for every button, tag, and search field — partial rounding on an interactive control is off-system.",
+      "Do switch to Georgia serif only for .prose article body content; keep every other surface on Outfit/Space Grotesk.",
+      "Do keep neutrals warm (linen-tinted) rather than reaching for pure gray or pure white/black, in both light and dark mode.",
+      "Do reserve the amber/orange affiliate-button treatment (.affiliate-btn) exclusively for outbound purchase links, never for ordinary internal navigation CTAs."
+    ],
+    "donts": [
+      "Don't introduce a fourth heading/body font family outside Outfit, Space Grotesk, and JetBrains Mono.",
+      "Don't ship a sharp-cornered (non-rounded) button, input, or card; it breaks the friendly, approachable character the palette and shapes are built around."
+    ]
+  }
+}

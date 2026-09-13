@@ -112,6 +112,15 @@ const HARDWARE_CATEGORIES = [
   { label: 'Budget Gear', key: 'Budget' },
 ];
 
+// ─── Split-Deck lane quick-links ──────────────────────────────────
+const BUYING_LANE_CATEGORIES = HARDWARE_CATEGORIES.slice(0, 4);
+const DISCOVERY_LANE_CATEGORIES = [
+  { label: 'RPG', href: '/games/RPG' },
+  { label: 'Cozy Games', href: '/games/Cozy%20Games' },
+  { label: 'Indie', href: '/games/Indie' },
+  { label: 'Latest News', href: '/news/News' },
+];
+
 // ═════════════════════════════════════════════════════════════════
 // HOMEPAGE
 // ═════════════════════════════════════════════════════════════════
@@ -119,8 +128,17 @@ export default function BlogHome() {
   const trendingPosts = getTrendingPosts(3);
   const featuredPosts = getFeaturedPosts(3);
   const editorsPicks = getEditorsPicks(4);
-  const hardwarePosts = getPostsByPillar('Hardware & Gear', 4);
   const gameDiscoveryPosts = getPostsByPillar('Games', 4);
+
+  // Split-Deck: 3 for the lane teaser, 4 more for the deeper Hardware & Gear Picks section
+  const allHardwarePosts = getPostsByPillar('Hardware & Gear', 7);
+  const buyingLanePosts = allHardwarePosts.slice(0, 3);
+  const hardwarePosts = allHardwarePosts.slice(3, 7);
+
+  // News & Discovery lane: a real mix of fresh game-discovery and news posts
+  const discoveryLanePosts = [...getPostsByPillar('Games', 2), ...getPostsByPillar('News', 2)]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
 
   // Collect slugs already shown to avoid duplication in Latest
   const shownSlugs = [
@@ -166,6 +184,19 @@ export default function BlogHome() {
 
   return (
     <div className="bg-background text-primary pt-24 overflow-x-hidden">
+      <div
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: `<!--
+THESIS: The dual-audience split is the page's literal shape from the first viewport, not a scroll-discovered sequence — refuses the hero-then-stacked-sections default every gaming blog ships.
+OWN-WORLD: "Reload Console" identity: warm linen/off-white grounds, vivid cerulean as sole action color, sky blue accent, Outfit + Space Grotesk, pill-shaped buttons, rounded-3xl cards, no sharp corners.
+STORY: A visitor sees two labeled lanes immediately, knows which matches their intent within seconds, and clicks real content from that lane without scrolling past the other.
+FIRST VIEWPORT: Below a trimmed hero line, two columns fill the viewport, stacked on mobile: left Buying Guides lane, linen-tinted, real hardware posts, cerulean CTA, wider/leading (revenue-critical); right News & Discovery lane, plain ground, real posts, own CTA. Center spine divides them; both converge into one Latest Articles feed below.
+FORM: Split-Deck Router, dealt position 2 of 7 ranked, locked over the assigned lead; seed key 1d8d4e98.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->`,
+        }}
+      />
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -173,21 +204,92 @@ export default function BlogHome() {
       />
 
       {/* ──── HERO BRANDING SECTION (H1) ──── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-2 text-center relative">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-2 text-center relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[300px] h-[300px] bg-primary/10 rounded-full blur-[100px]" />
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-primary/80" style={{ fontFamily: 'var(--font-heading)' }}>
           Chronic Reload
         </h1>
         <p className="text-muted-foreground mt-4 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-medium">
-          Your source for hard-hitting gaming reviews, hardware buying guides, and breaking industry news.
+          Reviews, buying guides, and breaking news — pick your path below.
         </p>
       </section>
 
-      {/* ──── 1. HERO — Trending Carousel ──── */}
+      {/* ──── 1. SPLIT-DECK ROUTER ──── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Buying Guides lane — leads, wider, revenue-critical */}
+          <div className="lg:col-span-7 bg-accent/20 border border-border/40 rounded-3xl p-6 sm:p-8 lg:border-r lg:border-border">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
+              Buying Guides
+            </h2>
+            <p className="text-muted-foreground mb-6">Laptops, monitors, keyboards, and mice — tested picks at every budget.</p>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {BUYING_LANE_CATEGORIES.map(cat => (
+                <Link
+                  key={cat.key}
+                  href={`/hardware/${encodeURIComponent(cat.key)}`}
+                  className="px-4 py-1.5 rounded-full text-sm font-semibold text-foreground bg-card border border-border/50 hover:border-primary/40 hover:text-primary transition-colors"
+                >
+                  {cat.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 mb-6">
+              {buyingLanePosts.map(post => (
+                <ArticleCard key={post.slug} post={post} />
+              ))}
+            </div>
+
+            <Link
+              href="/hardware"
+              className="inline-flex items-center gap-2 py-3 px-8 bg-primary text-primary-foreground font-bold rounded-full hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 transition-all duration-200"
+            >
+              Browse all hardware guides →
+            </Link>
+          </div>
+
+          {/* News & Discovery lane */}
+          <div className="lg:col-span-5 bg-card border border-border/40 rounded-3xl p-6 sm:p-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
+              News &amp; Discovery
+            </h2>
+            <p className="text-muted-foreground mb-6">Fresh releases, industry news, and your next favorite game.</p>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {DISCOVERY_LANE_CATEGORIES.map(cat => (
+                <Link
+                  key={cat.label}
+                  href={cat.href}
+                  className="px-4 py-1.5 rounded-full text-sm font-semibold text-foreground bg-accent/40 border border-border/50 hover:border-primary/40 hover:text-primary transition-colors"
+                >
+                  {cat.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 mb-6">
+              {discoveryLanePosts.map(post => (
+                <ArticleCard key={post.slug} post={post} />
+              ))}
+            </div>
+
+            <Link
+              href="/games"
+              className="inline-flex items-center gap-2 py-3 px-8 bg-card text-foreground border border-border rounded-full font-bold hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+            >
+              Browse news &amp; discovery →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ──── 2. TRENDING CAROUSEL ──── */}
       <TrendingCarousel slides={trendingPosts} />
 
 
-      {/* ──── 2. TRENDING NOW ──── */}
+      {/* ──── 3. FEATURED ──── */}
       {featuredPosts.length > 0 && (
         <section className="py-16 relative">
           <div className="absolute top-0 right-0 -z-10 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px]" />
@@ -203,10 +305,10 @@ export default function BlogHome() {
       )}
 
 
-      {/* ──── 3. EXPLORE BY CATEGORY ──── */}
+      {/* ──── 4. EXPLORE BY CATEGORY (full index — for browsing beyond the two lanes above) ──── */}
       <section className="py-16 bg-accent/30 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader title="Explore by Category" subtitle="Browse games, hardware, and guides by topic" />
+          <SectionHeader title="Explore by Category" subtitle="Browse the full index of games, hardware, and guides" />
 
           {/* Games Subsection */}
           <div className="mb-16">
@@ -275,22 +377,6 @@ export default function BlogHome() {
       </section>
 
 
-      {/* ──── 4. GAME DISCOVERY GUIDES ──── */}
-      {gameDiscoveryPosts.length > 0 && (
-        <section className="py-24 relative">
-          <div className="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px]" />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <SectionHeader title="Game Discovery Guides" subtitle="Popular curated game recommendations" action={{ label: 'View All Games', href: '/games' }} />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {gameDiscoveryPosts.map(post => (
-                <HorizontalCard key={post.slug} post={post} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-
       {/* ──── 5. HARDWARE & GEAR PICKS ──── */}
       {hardwarePosts.length > 0 && (
         <section className="py-16 bg-accent/30 border-y border-border relative">
@@ -307,7 +393,23 @@ export default function BlogHome() {
       )}
 
 
-      {/* ──── 6. EDITOR'S PICKS / HIDDEN GEMS ──── */}
+      {/* ──── 6. GAME DISCOVERY GUIDES ──── */}
+      {gameDiscoveryPosts.length > 0 && (
+        <section className="py-24 relative">
+          <div className="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px]" />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionHeader title="Game Discovery Guides" subtitle="Popular curated game recommendations" action={{ label: 'View All Games', href: '/games' }} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {gameDiscoveryPosts.map(post => (
+                <HorizontalCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+
+      {/* ──── 7. EDITOR'S PICKS / HIDDEN GEMS ──── */}
       {editorsPicks.length > 0 && (
         <section className="py-16 relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -322,7 +424,7 @@ export default function BlogHome() {
       )}
 
 
-      {/* ──── 7. LATEST ARTICLES ──── */}
+      {/* ──── 8. LATEST ARTICLES ──── */}
       <section className="py-24 bg-accent/30 rounded-t-[3rem] border-t border-border relative">
         <div className="absolute top-20 left-0 -z-10 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -343,7 +445,7 @@ export default function BlogHome() {
       </section>
 
 
-      {/* ──── 8. FIND YOUR NEXT GAME — Discovery Section ──── */}
+      {/* ──── 9. FIND YOUR NEXT GAME — Discovery Section ──── */}
       <section className="py-20 relative overflow-hidden">
         {/* Ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-[700px] h-[400px] bg-primary/10 rounded-full blur-[120px]" />
@@ -399,7 +501,7 @@ export default function BlogHome() {
         </div>
       </section>
 
-      {/* ──── 9. EDITORIAL MISSION / ABOUT SECTION (AI/GEO & EEAT Optimization) ──── */}
+      {/* ──── 10. EDITORIAL MISSION / ABOUT SECTION (AI/GEO & EEAT Optimization) ──── */}
       <section className="py-20 bg-accent/20 border-t border-border relative">
         <div className="absolute bottom-10 right-10 -z-10 w-[300px] h-[300px] bg-secondary/5 rounded-full blur-[80px]" />
         

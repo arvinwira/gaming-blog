@@ -4,7 +4,7 @@ export default function AffiliateButton({ link, children }) {
             <a
                 href={link}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow sponsored noopener noreferrer"
                 className="relative overflow-hidden group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 hover:from-amber-600 hover:via-orange-600 hover:to-yellow-600 text-black font-extrabold rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-orange-500/40 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-300"
                 style={{ fontFamily: 'var(--font-heading)' }}
             >

@@ -171,6 +171,9 @@ export default async function Post({ params }) {
             <div className="prose dark:prose-invert prose-lg max-w-none prose-headings:font-heading prose-a:text-primary hover:prose-a:text-secondary">
               <MDXContent code={code} />
             </div>
+            <p className="mt-10 text-sm text-muted-foreground border border-border/50 rounded-xl px-5 py-4 bg-accent/20">
+              <strong className="text-foreground">Disclosure:</strong> Chronic Reload is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate we earn from qualifying purchases made through links on this page, at no extra cost to you. Prices and availability shown on Amazon are accurate as of the time of purchase.
+            </p>
             <ShareButtons title={frontmatter.title} url={`https://chronicreload.com/blog/${slug}`} />
           </div>
 
